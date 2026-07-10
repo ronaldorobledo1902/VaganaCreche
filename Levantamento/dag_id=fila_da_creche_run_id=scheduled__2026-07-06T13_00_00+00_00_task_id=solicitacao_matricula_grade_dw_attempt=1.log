@@ -1,0 +1,172 @@
+SME-AIRFLOW-NEW
+*** Reading local file: /data/airflow/logs/dag_id=fila_da_creche/run_id=scheduled__2026-07-06T13:00:00+00:00/task_id=solicitacao_matricula_grade_dw/attempt=1.log
+[2026-07-07T10:00:01.206-0300] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: fila_da_creche.solicitacao_matricula_grade_dw scheduled__2026-07-06T13:00:00+00:00 [queued]>
+[2026-07-07T10:00:01.216-0300] {taskinstance.py:1087} INFO - Dependencies all met for <TaskInstance: fila_da_creche.solicitacao_matricula_grade_dw scheduled__2026-07-06T13:00:00+00:00 [queued]>
+[2026-07-07T10:00:01.217-0300] {taskinstance.py:1283} INFO - 
+--------------------------------------------------------------------------------
+[2026-07-07T10:00:01.217-0300] {taskinstance.py:1284} INFO - Starting attempt 1 of 3
+[2026-07-07T10:00:01.217-0300] {taskinstance.py:1285} INFO - 
+--------------------------------------------------------------------------------
+[2026-07-07T10:00:01.231-0300] {taskinstance.py:1304} INFO - Executing <Task(PostgresOperator): solicitacao_matricula_grade_dw> on 2026-07-06 13:00:00+00:00
+[2026-07-07T10:00:01.236-0300] {standard_task_runner.py:55} INFO - Started process 1893537 to run task
+[2026-07-07T10:00:01.240-0300] {standard_task_runner.py:82} INFO - Running: ['airflow', 'tasks', 'run', 'fila_da_creche', 'solicitacao_matricula_grade_dw', 'scheduled__2026-07-06T13:00:00+00:00', '--job-id', '464260', '--raw', '--subdir', 'DAGS_FOLDER/fila_da_creche.py', '--cfg-path', '/tmp/tmpwwuc9exl']
+[2026-07-07T10:00:01.241-0300] {standard_task_runner.py:83} INFO - Job 464260: Subtask solicitacao_matricula_grade_dw
+[2026-07-07T10:00:01.343-0300] {task_command.py:389} INFO - Running <TaskInstance: fila_da_creche.solicitacao_matricula_grade_dw scheduled__2026-07-06T13:00:00+00:00 [running]> on host SME-AIRFLOW-NEW
+[2026-07-07T10:00:01.445-0300] {taskinstance.py:1511} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=airflow
+AIRFLOW_CTX_DAG_ID=fila_da_creche
+AIRFLOW_CTX_TASK_ID=solicitacao_matricula_grade_dw
+AIRFLOW_CTX_EXECUTION_DATE=2026-07-06T13:00:00+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=scheduled__2026-07-06T13:00:00+00:00
+[2026-07-07T10:00:01.446-0300] {sql.py:254} INFO - Executing: /*
+ * Essa query seleciona as solicitações de matrícula de quem ainda
+ * não está na rede ('C' para Cadastro), faz join com a grade de distância
+ * para retornar todas as unidades educacionais a que o solicitante concorre.
+ * Ela também gera um número único aleatório para a solicitação,
+ * de modo a anonimizar o dado para abertura.
+ */
+DROP TABLE IF EXISTS mat_pref;
+create temporary table mat_pref as (
+    select cd_solicitacao_matricula,
+           cd_unidade_educacao,
+           cd_solicitacao_matricula_preferencial
+    from (
+             select cd_solicitacao_matricula,
+                    cd_unidade_educacao,
+                    cd_solicitacao_matricula_preferencial,
+                    row_number()
+                    over (partition by cd_solicitacao_matricula order by cd_solicitacao_matricula_preferencial desc ) ordem
+             from raw_eol.solicitacao_matricula_preferencial
+             where tp_preferencia = 'E'
+               and dt_fim isnull
+               and cd_unidade_educacao is not null
+         ) alu_pref
+    where ordem = 1
+);
+
+
+DROP TABLE IF EXISTS sol_mat_status_s;
+create temporary table sol_mat_status_s as (
+    select soldw.cd_solicitacao_matricula, cd_serie_ensino, cd_unidade_educacao
+    from dw_facts_eol.solicitacao_matricula_dw as soldw
+    WHERE soldw.nm_tabela_origem = 'SOLICITACAO'
+      AND soldw.st_solicitacao_atual = 'S'
+      AND soldw.tp_origem = 'C'
+      AND soldw.dt_status_solicitacao < NOW() - interval '30 days'  -- Solicitações feitas à mais de 30 dias
+);
+
+
+DROP TABLE IF EXISTS random_number;
+create temporary table random_number as (
+    SELECT cd_solicitacao_matricula_distinct,
+           row_number() over (ORDER BY random()) AS cd_solicitacao_matricula_random
+    FROM (
+             SELECT DISTINCT cd_solicitacao_matricula AS cd_solicitacao_matricula_distinct
+             FROM sol_mat_status_s
+         ) AS temp
+);
+
+
+DROP TABLE IF EXISTS dw_facts_eol.solicitacao_matricula_grade_dw;
+CREATE TABLE dw_facts_eol.solicitacao_matricula_grade_dw AS (
+SELECT --solicit.cd_solicitacao_matricula,
+       solicit.cd_serie_ensino,
+       random_number.cd_solicitacao_matricula_random,
+       grade.cd_solicitacao_matricula_grade_distancia,
+       grade.cd_unidade_educacao,
+       grade.in_elegivel_compatibilizacao,
+       grade.in_grade_ano_corrente,
+       grade.in_grade_ano_seguinte,
+       --solicit.st_solicitacao
+       grade.qt_distancia
+FROM sol_mat_status_s AS solicit
+         LEFT JOIN raw_eol.solicitacao_matricula_grade_distancia AS grade
+                   ON solicit.cd_solicitacao_matricula = grade.cd_solicitacao_matricula
+         LEFT JOIN random_number
+                   ON solicit.cd_solicitacao_matricula = random_number.cd_solicitacao_matricula_distinct
+         left join mat_pref pref on pref.cd_solicitacao_matricula = solicit.cd_solicitacao_matricula
+
+WHERE grade.qt_distancia <= 2000
+  and (pref.cd_solicitacao_matricula isnull -- sem preferencial
+    or (pref.cd_solicitacao_matricula notnull and pref.cd_unidade_educacao = solicit.cd_unidade_educacao))
+);
+[2026-07-07T10:00:01.473-0300] {base.py:73} INFO - Using connection ID 'ciedu_dw' for task execution.
+[2026-07-07T10:00:01.625-0300] {base.py:73} INFO - Using connection ID 'ciedu_dw' for task execution.
+[2026-07-07T10:00:01.647-0300] {sql.py:375} INFO - Running statement: /*
+ * Essa query seleciona as solicitações de matrícula de quem ainda
+ * não está na rede ('C' para Cadastro), faz join com a grade de distância
+ * para retornar todas as unidades educacionais a que o solicitante concorre.
+ * Ela também gera um número único aleatório para a solicitação,
+ * de modo a anonimizar o dado para abertura.
+ */
+DROP TABLE IF EXISTS mat_pref;
+create temporary table mat_pref as (
+    select cd_solicitacao_matricula,
+           cd_unidade_educacao,
+           cd_solicitacao_matricula_preferencial
+    from (
+             select cd_solicitacao_matricula,
+                    cd_unidade_educacao,
+                    cd_solicitacao_matricula_preferencial,
+                    row_number()
+                    over (partition by cd_solicitacao_matricula order by cd_solicitacao_matricula_preferencial desc ) ordem
+             from raw_eol.solicitacao_matricula_preferencial
+             where tp_preferencia = 'E'
+               and dt_fim isnull
+               and cd_unidade_educacao is not null
+         ) alu_pref
+    where ordem = 1
+);
+
+
+DROP TABLE IF EXISTS sol_mat_status_s;
+create temporary table sol_mat_status_s as (
+    select soldw.cd_solicitacao_matricula, cd_serie_ensino, cd_unidade_educacao
+    from dw_facts_eol.solicitacao_matricula_dw as soldw
+    WHERE soldw.nm_tabela_origem = 'SOLICITACAO'
+      AND soldw.st_solicitacao_atual = 'S'
+      AND soldw.tp_origem = 'C'
+      AND soldw.dt_status_solicitacao < NOW() - interval '30 days'  -- Solicitações feitas à mais de 30 dias
+);
+
+
+DROP TABLE IF EXISTS random_number;
+create temporary table random_number as (
+    SELECT cd_solicitacao_matricula_distinct,
+           row_number() over (ORDER BY random()) AS cd_solicitacao_matricula_random
+    FROM (
+             SELECT DISTINCT cd_solicitacao_matricula AS cd_solicitacao_matricula_distinct
+             FROM sol_mat_status_s
+         ) AS temp
+);
+
+
+DROP TABLE IF EXISTS dw_facts_eol.solicitacao_matricula_grade_dw;
+CREATE TABLE dw_facts_eol.solicitacao_matricula_grade_dw AS (
+SELECT --solicit.cd_solicitacao_matricula,
+       solicit.cd_serie_ensino,
+       random_number.cd_solicitacao_matricula_random,
+       grade.cd_solicitacao_matricula_grade_distancia,
+       grade.cd_unidade_educacao,
+       grade.in_elegivel_compatibilizacao,
+       grade.in_grade_ano_corrente,
+       grade.in_grade_ano_seguinte,
+       --solicit.st_solicitacao
+       grade.qt_distancia
+FROM sol_mat_status_s AS solicit
+         LEFT JOIN raw_eol.solicitacao_matricula_grade_distancia AS grade
+                   ON solicit.cd_solicitacao_matricula = grade.cd_solicitacao_matricula
+         LEFT JOIN random_number
+                   ON solicit.cd_solicitacao_matricula = random_number.cd_solicitacao_matricula_distinct
+         left join mat_pref pref on pref.cd_solicitacao_matricula = solicit.cd_solicitacao_matricula
+
+WHERE grade.qt_distancia <= 2000
+  and (pref.cd_solicitacao_matricula isnull -- sem preferencial
+    or (pref.cd_solicitacao_matricula notnull and pref.cd_unidade_educacao = solicit.cd_unidade_educacao))
+);, parameters: None
+[2026-07-07T10:00:28.240-0300] {sql.py:384} INFO - Rows affected: 16125
+[2026-07-07T10:00:28.267-0300] {taskinstance.py:1322} INFO - Marking task as SUCCESS. dag_id=fila_da_creche, task_id=solicitacao_matricula_grade_dw, execution_date=20260706T130000, start_date=20260707T130001, end_date=20260707T130028
+[2026-07-07T10:00:28.306-0300] {local_task_job.py:159} INFO - Task exited with return code 0
+[2026-07-07T10:00:28.346-0300] {taskinstance.py:2582} INFO - 1 downstream tasks scheduled from follow-on schedule check
+
