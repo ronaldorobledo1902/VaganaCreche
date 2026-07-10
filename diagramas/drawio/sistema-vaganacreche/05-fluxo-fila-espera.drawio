@@ -1,0 +1,115 @@
+<mxfile host="app.diagrams.net" agent="Cursor" version="24.7.0">
+  <diagram id="seq-fila" name="4.1 - Fluxo Fila Espera">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="hdr" value="4.1 — Consulta de Demanda (Fila de Espera)" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="300" y="20" width="500" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lane_u" value="Cidadao" style="swimlane;whiteSpace=wrap;html=1;startSize=24;fillColor=#f5f5f5;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="140" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_fe" value="FrontEnd" style="swimlane;whiteSpace=wrap;html=1;startSize=24;fillColor=#dae8fc;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="200" y="70" width="140" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_geo" value="API Enderecos" style="swimlane;whiteSpace=wrap;html=1;startSize=24;fillColor=#f5f5f5;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="360" y="70" width="140" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_api" value="API Creche" style="swimlane;whiteSpace=wrap;html=1;startSize=24;fillColor=#fff2cc;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="520" y="70" width="140" height="520" as="geometry"/>
+        </mxCell>
+        <mxCell id="lane_fila" value="Banco Fila (PostGIS)" style="swimlane;whiteSpace=wrap;html=1;startSize=24;fillColor=#f8cecc;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="680" y="70" width="160" height="520" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="lif_u" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#666666;strokeColor=#333333;" vertex="1" parent="lane_u">
+          <mxGeometry x="65" y="40" width="10" height="460" as="geometry"/>
+        </mxCell>
+        <mxCell id="lif_fe" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#666666;strokeColor=#333333;" vertex="1" parent="lane_fe">
+          <mxGeometry x="65" y="40" width="10" height="460" as="geometry"/>
+        </mxCell>
+        <mxCell id="lif_geo" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#666666;strokeColor=#333333;" vertex="1" parent="lane_geo">
+          <mxGeometry x="65" y="40" width="10" height="460" as="geometry"/>
+        </mxCell>
+        <mxCell id="lif_api" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#666666;strokeColor=#333333;" vertex="1" parent="lane_api">
+          <mxGeometry x="65" y="40" width="10" height="460" as="geometry"/>
+        </mxCell>
+        <mxCell id="lif_fila" value="" style="html=1;points=[];perimeter=orthogonalPerimeter;fillColor=#666666;strokeColor=#333333;" vertex="1" parent="lane_fila">
+          <mxGeometry x="75" y="40" width="10" height="460" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="m1" value="1. Informa endereco e data nascimento" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="105" y="120" as="sourcePoint"/>
+            <mxPoint x="265" y="120" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m2" value="2. GET /v1/search?text=..." style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="160" as="sourcePoint"/>
+            <mxPoint x="425" y="160" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m3" value="3. Coordenadas (lat/lng)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;dashed=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="425" y="200" as="sourcePoint"/>
+            <mxPoint x="265" y="200" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m4" value="4. Calcula serie + localStorage" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;curved=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="310" y="240"/>
+              <mxPoint x="310" y="260"/>
+            </Array>
+            <mxPoint x="270" y="240" as="sourcePoint"/>
+            <mxPoint x="270" y="260" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m5" value="5. GET /fila/espera_escola_raio/{lat}/{lng}/{serie}" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="300" as="sourcePoint"/>
+            <mxPoint x="585" y="300" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m6" value="6. SQL + ST_DWithin (raio geografico)" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="340" as="sourcePoint"/>
+            <mxPoint x="755" y="340" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m7" value="7. Escolas + posicao na fila" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;dashed=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="755" y="380" as="sourcePoint"/>
+            <mxPoint x="585" y="380" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m8" value="8. JSON com escolas" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;dashed=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="585" y="420" as="sourcePoint"/>
+            <mxPoint x="265" y="420" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m9" value="9. POST /pesquisa/historico_busca_end/" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="460" as="sourcePoint"/>
+            <mxPoint x="585" y="460" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="m10" value="10. Tabela + Mapa" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;dashed=1;fontSize=10;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="265" y="500" as="sourcePoint"/>
+            <mxPoint x="105" y="500" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+
+        <mxCell id="note" value="Sem cache Redis neste fluxo | 3 conexoes DB por request (connect-per-query)" style="text;html=1;strokeColor=none;fillColor=#fff2cc;align=center;fontSize=10;fontStyle=2" vertex="1" parent="1">
+          <mxGeometry x="200" y="610" width="600" height="30" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

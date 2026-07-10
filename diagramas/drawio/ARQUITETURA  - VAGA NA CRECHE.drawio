@@ -1,0 +1,512 @@
+<mxfile host="app.diagrams.net" agent="Cursor" pages="7">
+  <diagram id="ctx-vnc" name="AIRFLOW-Contexto VagasNaCreche + Airflow">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1" value="Contexto — SME Vagas na Creche + Pipeline Airflow" vertex="1">
+          <mxGeometry height="40" width="800" x="300" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="user" parent="1" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;fillColor=#fff2cc;strokeColor=#d6b656;" value="Cidadao / Navegador" vertex="1">
+          <mxGeometry height="80" width="40" x="80" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="fe" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="FrontEnd React&#xa;(SPA publica)" vertex="1">
+          <mxGeometry height="60" width="160" x="200" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="API Django DRF&#xa;(Kubernetes)" vertex="1">
+          <mxGeometry height="60" width="160" x="420" y="330" as="geometry" />
+        </mxCell>
+        <mxCell id="fila_db" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" value="PostgreSQL&#xa;Fila da Creche&#xa;(PostGIS :5433)" vertex="1">
+          <mxGeometry height="100" width="160" x="640" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="airflow" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" value="Apache Airflow&#xa;DAG fila_da_creche&#xa;Schedule: 0 10 * * *" vertex="1">
+          <mxGeometry height="80" width="200" x="900" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="pg_app" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" value="PostgreSQL&#xa;db_vaga" vertex="1">
+          <mxGeometry height="80" width="160" x="420" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="ciedu_api" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#e1d5e7;strokeColor=#9673a6;" value="CIEDUDW&#xa;(vagas remanescentes)" vertex="1">
+          <mxGeometry height="80" width="160" x="620" y="480" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_box" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" value="" vertex="1">
+          <mxGeometry height="120" width="500" x="80" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="legend_title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=1" value="Legenda" vertex="1">
+          <mxGeometry height="20" width="80" x="90" y="565" as="geometry" />
+        </mxCell>
+        <mxCell id="leg1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;" value="Pipeline ETL (Airflow) alimenta Fila da Creche" vertex="1">
+          <mxGeometry height="20" width="320" x="90" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="leg2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;" value="API le Fila DB (fila) + CIEDUDW (vagas) + db_vaga (historico)" vertex="1">
+          <mxGeometry height="20" width="400" x="90" y="615" as="geometry" />
+        </mxCell>
+        <mxCell id="leg3" parent="1" style="text;html=1;strokeColor=none;fillColor=none;" value="Dados atualizados diariamente as 10h (America/Sao_Paulo)" vertex="1">
+          <mxGeometry height="20" width="400" x="90" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="user" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" target="fe">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="fe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;" target="api" value="HTTP REST">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#82b366;" target="fila_db" value="SQL /fila/*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" source="airflow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#d79b00;dashed=1;" target="fila_db" value="ETL diario">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="ciedu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#b85450;" target="airflow" value="extract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#9673a6;dashed=1;" target="pg_app" value="ORM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#9673a6;dashed=1;" target="ciedu_api" value="SQL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_etl" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;startSize=30;" value="Camada ETL (ciedu-workflows)" vertex="1">
+          <mxGeometry height="380" width="580" x="860" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="ciedu" parent="zone_etl" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#f8cecc;strokeColor=#b85450;" value="CIEDU DW&#xa;(PostgreSQL)&#xa;potomac.educacao.intranet" vertex="1">
+          <mxGeometry height="90" width="160" x="220" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="zone_app" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=30;" value="Camada Aplicacao (Kubernetes)" vertex="1">
+          <mxGeometry height="300" width="640" x="180" y="280" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="NhE-jimJcMLmRpdUQBuH" name="ARFLOW- Dag Fila da Creche">
+    <mxGraphModel dx="1559" dy="669" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1" value="DAG fila_da_creche — 11 tasks | Schedule 0 10 * * * | ~1 min | BashOperator + PostgresOperator" vertex="1">
+          <mxGeometry height="30" width="1000" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;startSize=28;fontStyle=1" value="FASE 1 — Extracao (paralelo)" vertex="1">
+          <mxGeometry height="220" width="520" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-3" parent="aciQx2S9TeHMp_Wmq7UM-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="solicitacao_&#xa;matricula_grade_dw" vertex="1">
+          <mxGeometry height="50" width="110" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-4" parent="aciQx2S9TeHMp_Wmq7UM-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="solicitacao_&#xa;matricula_grade_dw_&#xa;atualizacao" vertex="1">
+          <mxGeometry height="50" width="110" x="150" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-5" parent="aciQx2S9TeHMp_Wmq7UM-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="unidades_educacionais_&#xa;ativas_endereco_contato" vertex="1">
+          <mxGeometry height="50" width="110" x="280" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-6" parent="aciQx2S9TeHMp_Wmq7UM-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="unidades_educacionais_&#xa;infantil_vagas_serie" vertex="1">
+          <mxGeometry height="50" width="110" x="400" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-7" parent="aciQx2S9TeHMp_Wmq7UM-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" value="unidades_educacionais_&#xa;infantil_vagas_serie_v2" vertex="1">
+          <mxGeometry height="50" width="110" x="20" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-19" edge="1" parent="aciQx2S9TeHMp_Wmq7UM-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=none;startArrow=none;startFill=0;endFill=0;">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="130" />
+              <mxPoint x="570" y="130" />
+            </Array>
+            <mxPoint x="320" y="100" as="sourcePoint" />
+            <mxPoint x="570" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-8" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=28;fontStyle=1" value="FASE 2 — Limpeza" vertex="1">
+          <mxGeometry height="200" width="180" x="600" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-9" parent="aciQx2S9TeHMp_Wmq7UM-8" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;fontSize=11;" value="truncate_fila_&#xa;da_creche_tables" vertex="1">
+          <mxGeometry height="60" width="130" x="25" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-10" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=28;fontStyle=1" value="FASE 3 — Carga (sequencial)" vertex="1">
+          <mxGeometry height="130" width="740" x="40" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-11" parent="aciQx2S9TeHMp_Wmq7UM-10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="copy_unidades_&#xa;educacionais_infantil_&#xa;vagas_serie" vertex="1">
+          <mxGeometry height="55" width="120" x="20" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-12" parent="aciQx2S9TeHMp_Wmq7UM-10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="copy_unidades_&#xa;educacionais_ativas_&#xa;endereco_contato" vertex="1">
+          <mxGeometry height="55" width="120" x="170" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-13" parent="aciQx2S9TeHMp_Wmq7UM-10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="copy_solicitacao_&#xa;matricula_grade_dw" vertex="1">
+          <mxGeometry height="55" width="120" x="320" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-14" parent="aciQx2S9TeHMp_Wmq7UM-10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="copy_solicitacao_&#xa;matricula_grade_dw_&#xa;atualizacao" vertex="1">
+          <mxGeometry height="55" width="120" x="470" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-15" parent="aciQx2S9TeHMp_Wmq7UM-10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;fontSize=10;" value="add_geom_&#xa;to_schools&#xa;(PostGIS)" vertex="1">
+          <mxGeometry height="55" width="90" x="620" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-16" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-18" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="245" y="200" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-20" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="aciQx2S9TeHMp_Wmq7UM-9">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="495" y="200" />
+            </Array>
+            <mxPoint x="620" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-21" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-22" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-11">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="300" />
+              <mxPoint x="120" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-23" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-24" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-25" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-26" edge="1" parent="1" source="aciQx2S9TeHMp_Wmq7UM-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;endArrow=classic;" target="aciQx2S9TeHMp_Wmq7UM-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-27" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="Estatisticas (Airflow UI)&#xa;-------------------&#xa;Sucesso: 31.274&#xa;Falha: 156&#xa;Upstream failed: 854&#xa;Duracao media: 1m 03s&#xa;&#xa;Gargalo: unidades_educacionais_* (15-50s)" vertex="1">
+          <mxGeometry height="140" width="240" x="40" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-28" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="Metadados DAG&#xa;-------------------&#xa;fileloc: /data/ciedu-workflows/dags/fila_da_creche.py&#xa;owner: airflow | retries: 2&#xa;start_date: 2018-06-20&#xa;timezone: America/Sao_Paulo&#xa;catchup: True | concurrency: 16" vertex="1">
+          <mxGeometry height="140" width="300" x="290" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="aciQx2S9TeHMp_Wmq7UM-29" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=11;" value="Destino final&#xa;-------------------&#xa;Conn: fila_da_creche_api_do&#xa;Host: 10.50.1.45:5432&#xa;Consumido pela API via FILADB_* (:5433)" vertex="1">
+          <mxGeometry height="110" width="220" x="570" y="460" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="4GpxeToGeAWjm3d4x9__" name="ARFLOW-Fluxo ETL Diário">
+    <mxGraphModel dx="1559" dy="669" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1" value="Fluxo ETL Diario — DAG fila_da_creche (truncate-and-load)" vertex="1">
+          <mxGeometry height="30" width="700" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-2" parent="1" style="shape=mxgraph.flowchart.start_1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Trigger&#xa;Cron 0 10 * * *&#xa;10:00 BRT" vertex="1">
+          <mxGeometry height="50" width="100" x="60" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=8;fontSize=11;" value="1. EXTRACT&lt;br&gt;(paralelo)&lt;br&gt;&lt;br&gt;CIEDU DW&lt;br&gt;via BashOperator +&lt;br&gt;PostgresOperator&lt;br&gt;&lt;br&gt;Export para /data/tmp/" vertex="1">
+          <mxGeometry height="120" width="200" x="220" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;align=left;spacingLeft=8;fontSize=11;" value="2. TRUNCATE&#xa;&#xa;truncate_fila_da_&#xa;creche_tables&#xa;&#xa;Limpa tabelas destino" vertex="1">
+          <mxGeometry height="100" width="180" x="480" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=8;fontSize=11;" value="3. LOAD&#xa;(sequencial)&#xa;&#xa;copy_unidades_educacionais_&#xa;infantil_vagas_serie&#xa;copy_unidades_educacionais_&#xa;ativas_endereco_contato&#xa;copy_solicitacao_matricula_&#xa;grade_dw (+ atualizacao)" vertex="1">
+          <mxGeometry height="140" width="220" x="720" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;align=left;spacingLeft=8;fontSize=11;" value="4. ENRIQUECER&#xa;&#xa;add_geom_to_schools&#xa;&#xa;Geometria PostGIS&#xa;para consultas espaciais" vertex="1">
+          <mxGeometry height="100" width="160" x="1000" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-7" parent="1" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" value="PostgreSQL&#xa;Fila da Creche&#xa;(PostGIS)" vertex="1">
+          <mxGeometry height="90" width="160" x="1000" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" value="API Django&#xa;GET /fila/*&#xa;FilaDBConnection" vertex="1">
+          <mxGeometry height="70" width="160" x="1000" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="FrontEnd React&#xa;Mapa + Fila de espera" vertex="1">
+          <mxGeometry height="60" width="160" x="1000" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;spacingLeft=10;fontSize=11;" value="RISCOS OPERACIONAIS&#xa;-------------------&#xa;[!] Janela truncate: dados vazios durante carga&#xa;[!] Catchup=True: backfill de execucoes perdidas&#xa;[!] 854 upstream_failed: falhas em cascata&#xa;[!] Tasks unidades_educacionais: 15-50s (gargalo)" vertex="1">
+          <mxGeometry height="120" width="380" x="70" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="TIMING&#xa;-------------------&#xa;Inicio DAG: 10:00 BRT&#xa;Duracao media: ~1 min&#xa;API updated_at: dia anterior 09:00&#xa;(calculado em dt_atualizacao.py)" vertex="1">
+          <mxGeometry height="110" width="380" x="470" y="285" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-12" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="TABELAS (inferidas pelas tasks)&#xa;-------------------&#xa;- solicitacao_matricula_grade_dw&#xa;- unidades_educacionais_ativas_endereco_contato&#xa;- unidades_educacionais_infantil_vagas_serie&#xa;+ coluna geometry (add_geom_to_schools)" vertex="1">
+          <mxGeometry height="120" width="380" x="70" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-13" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;" target="mPYqb6tMUzNkPMdlypG1-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-14" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;" target="mPYqb6tMUzNkPMdlypG1-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-15" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;" target="mPYqb6tMUzNkPMdlypG1-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-16" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;" target="mPYqb6tMUzNkPMdlypG1-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-17" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-6" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#82b366;endArrow=classic;" target="mPYqb6tMUzNkPMdlypG1-7" value="persist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-18" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-7" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#6c8ebf;endArrow=classic;dashed=1;" target="mPYqb6tMUzNkPMdlypG1-8" value="read">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-19" edge="1" parent="1" source="mPYqb6tMUzNkPMdlypG1-8" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=classic;" target="mPYqb6tMUzNkPMdlypG1-9" value="HTTP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-20" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=2;fontSize=10;" value="Pipeline Airflow (escrita)" vertex="1">
+          <mxGeometry height="20" width="160" x="220" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="mPYqb6tMUzNkPMdlypG1-21" parent="1" style="text;html=1;strokeColor=none;fillColor=none;fontStyle=2;fontSize=10;" value="Aplicacao (leitura)" vertex="1">
+          <mxGeometry height="20" width="160" x="1000" y="380" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="-_PtHO17JOlZqhYe69N-" name="SISTEMA -Diagrama de Arquitetura">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1" value="2. Diagrama de Arquitetura — SME Vagas na Creche" vertex="1">
+          <mxGeometry height="40" width="800" x="400" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-2" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;startSize=28;fontStyle=1" value="Cidadao / Navegador" vertex="1">
+          <mxGeometry height="100" width="200" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-3" parent="5Ax3aytMdnmFFXnB45ES-2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="SPA React&#xa;/vaga-na-creche" vertex="1">
+          <mxGeometry height="45" width="140" x="30" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-4" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=28;fontStyle=1" value="Kubernetes — FrontEnd" vertex="1">
+          <mxGeometry height="100" width="200" x="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-5" parent="5Ax3aytMdnmFFXnB45ES-4" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Nginx&#xa;assets estaticos" vertex="1">
+          <mxGeometry height="45" width="140" x="30" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-6" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;startSize=28;fontStyle=1" value="Kubernetes — API" vertex="1">
+          <mxGeometry height="120" width="260" x="520" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-7" parent="5Ax3aytMdnmFFXnB45ES-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="Nginx&#xa;reverse proxy :80" vertex="1">
+          <mxGeometry height="55" width="110" x="20" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-8" parent="5Ax3aytMdnmFFXnB45ES-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FF0000;strokeColor=#d6b656;" value="Gunicorn&#xa;Django DRF :8000&#xa;8 workers" vertex="1">
+          <mxGeometry height="55" width="110" x="140" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-9" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=28;fontStyle=1" value="Camada de Dados" vertex="1">
+          <mxGeometry height="160" width="520" x="520" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-10" parent="5Ax3aytMdnmFFXnB45ES-9" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" value="&lt;div&gt;DB_VAGA&lt;/div&gt;PostgreSQL" vertex="1">
+          <mxGeometry height="90" width="110" x="20" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-11" parent="5Ax3aytMdnmFFXnB45ES-9" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="CIEDUDW&#xa;Data Warehouse" vertex="1">
+          <mxGeometry height="90" width="110" x="145" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-12" parent="5Ax3aytMdnmFFXnB45ES-9" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" value="DB_FILACRECHE&lt;div&gt;PostgreSQL + PostGIS&lt;/div&gt;" vertex="1">
+          <mxGeometry height="90" width="110" x="270" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-13" parent="5Ax3aytMdnmFFXnB45ES-9" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" value="Redis 3.2&#xa;Cache" vertex="1">
+          <mxGeometry height="90" width="100" x="395" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-14" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;startSize=28;fontStyle=1" value="Servicos Externos" vertex="1">
+          <mxGeometry height="160" width="440" x="40" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-15" parent="5Ax3aytMdnmFFXnB45ES-14" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="API Geocodificacao&#xa;Pelias /v1/search" vertex="1">
+          <mxGeometry height="50" width="120" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-16" parent="5Ax3aytMdnmFFXnB45ES-14" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="OpenStreetMap&#xa;tiles de mapa" vertex="1">
+          <mxGeometry height="50" width="120" x="160" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-17" parent="5Ax3aytMdnmFFXnB45ES-14" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" value="Google Analytics" vertex="1">
+          <mxGeometry height="50" width="120" x="300" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-18" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;startSize=28;fontStyle=1" value="Operacao" vertex="1">
+          <mxGeometry height="120" width="1000" x="40" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-19" parent="5Ax3aytMdnmFFXnB45ES-18" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Jenkins CI/CD" vertex="1">
+          <mxGeometry height="55" width="140" x="30" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-20" parent="5Ax3aytMdnmFFXnB45ES-18" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" value="Registry SME&#xa;registry.sme.prefeitura.sp.gov.br" vertex="1">
+          <mxGeometry height="55" width="200" x="220" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-21" parent="5Ax3aytMdnmFFXnB45ES-18" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Notificacoes Telegram" vertex="1">
+          <mxGeometry height="55" width="160" x="470" y="45" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-22" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2" value="Stack: React 16 | Django 2.2 DRF | PostgreSQL 12 | Redis 3.2 | Nginx | Gunicorn 19.9 | K8s + Jenkins" vertex="1">
+          <mxGeometry height="30" width="800" x="200" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-23" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="5Ax3aytMdnmFFXnB45ES-5" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-24" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="5Ax3aytMdnmFFXnB45ES-7" value="HTTP REST" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-25" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-7" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="5Ax3aytMdnmFFXnB45ES-8" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-26" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-8" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;strokeColor=#82b366;" target="5Ax3aytMdnmFFXnB45ES-10" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-27" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-8" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;strokeColor=#b85450;" target="5Ax3aytMdnmFFXnB45ES-11" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-28" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-8" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;strokeColor=#b85450;" target="5Ax3aytMdnmFFXnB45ES-12" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-29" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-8" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;endArrow=block;strokeColor=#9673a6;" target="5Ax3aytMdnmFFXnB45ES-13" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-30" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;endArrow=block;" target="5Ax3aytMdnmFFXnB45ES-15" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-31" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;endArrow=block;" target="5Ax3aytMdnmFFXnB45ES-16" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-32" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;endArrow=block;" target="5Ax3aytMdnmFFXnB45ES-17" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-33" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-19" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;endArrow=block;strokeColor=#d79b00;" target="5Ax3aytMdnmFFXnB45ES-20" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-34" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-20" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;endArrow=block;strokeColor=#d79b00;" target="5Ax3aytMdnmFFXnB45ES-4" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-35" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-20" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;endArrow=block;strokeColor=#d79b00;" target="5Ax3aytMdnmFFXnB45ES-6" />
+        <mxCell id="5Ax3aytMdnmFFXnB45ES-36" edge="1" parent="1" source="5Ax3aytMdnmFFXnB45ES-19" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;endArrow=block;strokeColor=#d79b00;" target="5Ax3aytMdnmFFXnB45ES-21" />
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="r_T8M99-paQ3k9oCH-WX" name="SISTEMA -Matriz Risco de Seguranca">
+    <mxGraphModel dx="1284" dy="551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-14" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1" value="3.6 — Matriz de Risco de Seguranca" vertex="1">
+          <mxGeometry height="30" width="500" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-15" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2" value="Baixo Impacto  ——————————————  Alto Impacto" vertex="1">
+          <mxGeometry height="20" width="540" x="180" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-16" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2" value="Alta&#xa;Prob." vertex="1">
+          <mxGeometry height="40" width="60" x="100" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-17" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2" value="Baixa&#xa;Prob." vertex="1">
+          <mxGeometry height="40" width="60" x="100" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fc6;strokeColor=#333;fontStyle=1;fontSize=12;" value="Monitorar&#xa;&#xa;Swagger publico" vertex="1">
+          <mxGeometry height="180" width="260" x="180" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f96;strokeColor=#333;fontStyle=1;fontSize=12;" value="Mitigar urgentemente&lt;br&gt;&lt;br&gt;SQL Injection&lt;br&gt;Stack EOL&lt;br&gt;CORS aberto" vertex="1">
+          <mxGeometry height="180" width="260" x="460" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-20" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#9e9;strokeColor=#333;fontStyle=1;fontSize=12;" value="Aceitar&#xa;&#xa;(nenhum)" vertex="1">
+          <mxGeometry height="180" width="260" x="180" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-21" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ff9;strokeColor=#333;fontStyle=1;fontSize=12;" value="Planejar correcao&#xa;&#xa;API sem auth&#xa;Sem rate limit" vertex="1">
+          <mxGeometry height="180" width="260" x="460" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="z7iWHmw5fyfNXIgyO4WX-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="Controles existentes vs ausentes&#xa;-------------------&#xa;OK: CSRF, X-Frame-Options, Security Middleware&#xa;FALTA: Auth JWT, CORS restritivo, Rate limit&#xa;FALTA: Parametrizacao SQL, validacao lat/lon&#xa;Swagger publico sem autenticacao" vertex="1">
+          <mxGeometry height="80" width="540" x="180" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="hExG-rV5Y0JYK4P7ZQcO" name="SISTEMA - Pipeline CI/CD">
+    <mxGraphModel dx="6001" dy="3953" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1" value="3.7 — Pipeline CI/CD (Jenkins + Kubernetes)" vertex="1">
+          <mxGeometry height="30" width="600" x="350" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-23" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="YzfPsLHUbBBsPtjAXcpg-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" value="Push Git" vertex="1">
+          <mxGeometry height="50" width="100" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-24" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="YzfPsLHUbBBsPtjAXcpg-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-25" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YzfPsLHUbBBsPtjAXcpg-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" value="Jenkins Pipeline" vertex="1">
+          <mxGeometry height="50" width="120" x="180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-26" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YzfPsLHUbBBsPtjAXcpg-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="JSHint /&#xa;SonarQube" vertex="1">
+          <mxGeometry height="50" width="100" x="340" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-27" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="YzfPsLHUbBBsPtjAXcpg-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=10;" value="Docker Build" vertex="1">
+          <mxGeometry height="50" width="100" x="340" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-28" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="YzfPsLHUbBBsPtjAXcpg-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" value="Registry SME&#xa;registry.sme.&#xa;prefeitura.sp.gov.br" vertex="1">
+          <mxGeometry height="60" width="140" x="480" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-29" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="YzfPsLHUbBBsPtjAXcpg-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="kubectl&#xa;rollout restart" vertex="1">
+          <mxGeometry height="60" width="120" x="670" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" value="Notificacao&#xa;Telegram" vertex="1">
+          <mxGeometry height="60" width="100" x="820" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-9" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=28;fontStyle=1" value="Ambientes Kubernetes" vertex="1">
+          <mxGeometry height="120" width="560" x="200" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-10" parent="YzfPsLHUbBBsPtjAXcpg-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;fontSize=10;" value="vaganacreche-dev&#xa;branch: develop" vertex="1">
+          <mxGeometry height="50" width="120" x="20" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-11" parent="YzfPsLHUbBBsPtjAXcpg-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;fontSize=10;" value="vaganacreche-hom&#xa;branch: homolog" vertex="1">
+          <mxGeometry height="50" width="120" x="155" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-12" parent="YzfPsLHUbBBsPtjAXcpg-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;fontSize=10;" value="vaganacreche-hom2&#xa;branch: homolog-r2" vertex="1">
+          <mxGeometry height="50" width="120" x="290" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-13" parent="YzfPsLHUbBBsPtjAXcpg-9" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=10;" value="sme-vaganacreche&#xa;branch: master/main" vertex="1">
+          <mxGeometry height="50" width="120" x="425" y="50" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-14" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2" value="Repositorios: SME-VagasNaCreche-API + SME-VagasNaCreche-FrontEnd&#xa;Comunicacao: exclusivamente sincrona HTTP (sem mensageria)" vertex="1">
+          <mxGeometry height="40" width="700" x="200" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-15" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-3" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-16" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-4" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-17" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-5" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-18" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-4" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-6" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-19" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-5" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-6" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-20" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-6" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-7" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-21" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;endArrow=block;" target="YzfPsLHUbBBsPtjAXcpg-8" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-22" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-7" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;endArrow=block;strokeColor=#6c8ebf;" target="YzfPsLHUbBBsPtjAXcpg-9" />
+        <mxCell id="YzfPsLHUbBBsPtjAXcpg-30" edge="1" parent="1" source="YzfPsLHUbBBsPtjAXcpg-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.446;entryY=-0.018;entryDx=0;entryDy=0;entryPerimeter=0;" target="YzfPsLHUbBBsPtjAXcpg-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="oYotBl5QaX3BBOTeKh62" name="SISTEMA - AVALIAÇÃO CONSOLIDADA">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-23" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1" value="5. Avaliacao Consolidada — SME Vagas na Creche" vertex="1">
+          <mxGeometry height="30" width="600" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-24" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=11;" value="Funcionalidade&#xa;Adequada&#xa;&#xa;Atende consulta publica" vertex="1">
+          <mxGeometry height="80" width="160" x="80" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-25" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f96;strokeColor=#333;fontStyle=1;fontSize=11;" value="Seguranca&#xa;CRITICA&#xa;&#xa;SQL injection, CORS, sem auth" vertex="1">
+          <mxGeometry height="80" width="160" x="280" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-26" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Resiliencia&#xa;Baixa&#xa;&#xa;SPOFs, sem retry/health" vertex="1">
+          <mxGeometry height="80" width="160" x="480" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-27" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="Performance&#xa;Media&#xa;&#xa;Cache minimo, sem pool DW" vertex="1">
+          <mxGeometry height="80" width="160" x="680" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-28" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=11;" value="Observabilidade&#xa;Baixa&#xa;&#xa;Logs container, alertas deploy" vertex="1">
+          <mxGeometry height="80" width="160" x="80" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-29" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fc6;strokeColor=#333;fontSize=11;" value="Manutenibilidade&#xa;Media-Baixa&#xa;&#xa;Stack EOL, poucos testes" vertex="1">
+          <mxGeometry height="80" width="160" x="280" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;fontSize=11;" value="DevOps / Deploy&#xa;Boa&#xa;&#xa;Docker, Jenkins, K8s" vertex="1">
+          <mxGeometry height="80" width="160" x="480" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-31" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=11;" value="Escalabilidade&#xa;Media&#xa;&#xa;8 workers Gunicorn, limitada por DW" vertex="1">
+          <mxGeometry height="80" width="160" x="680" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-32" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="Legenda de cores&#xa;Verde = adequado/bom&#xa;Amarelo = atencao/media&#xa;Laranja = medio-baixo&#xa;Vermelho = critico/baixo" vertex="1">
+          <mxGeometry height="100" width="220" x="80" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-33" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;align=left;spacingLeft=10;fontSize=10;" value="Prioridades (secao 6)&#xa;-------------------&#xa;Curto prazo: SQL injection, health checks, CORS&#xa;Medio prazo: logging, APM, connection pool, cache&#xa;Longo prazo: upgrade stack, React Query, testes" vertex="1">
+          <mxGeometry height="100" width="500" x="340" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="UEOmDkLCP3OhQsS8O2zx-34" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="3.1 — Conexoes (resumo)&#xa;-------------------&#xa;FrontEnd → API: HTTP/REST (Axios)&#xa;FrontEnd → Pelias, OSM, GA: HTTPS&#xa;API → db_vaga: Django ORM&#xa;API → CIEDUDW / Fila: psycopg2 connect-per-query&#xa;API → Redis: django-redis (1 endpoint cacheado)" vertex="1">
+          <mxGeometry height="100" width="760" x="80" y="480" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

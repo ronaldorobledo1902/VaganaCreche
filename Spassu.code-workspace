@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../Spassu/SME-VagasNaCreche-API"
+		},
+		{
+			"path": "../../../Spassu/SME-VagasNaCreche-FrontEnd"
+		}
+	],
+	"settings": {}
+}

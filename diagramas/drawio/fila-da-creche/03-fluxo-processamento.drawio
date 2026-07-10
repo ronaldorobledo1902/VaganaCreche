@@ -1,0 +1,90 @@
+<mxfile host="app.diagrams.net" agent="Cursor" version="24.7.0">
+  <diagram id="fluxo-proc" name="6 - Fluxo de Processamento">
+    <mxGraphModel dx="1300" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="700" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="hdr" value="6. Fluxo de Processamento — 4 fases da DAG fila_da_creche" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="250" y="20" width="800" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p1" value="FASE 1 — Construcao DW" style="swimlane;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;startSize=32;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="300" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1t1" value="solicitacao_matricula_grade_dw" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p1">
+          <mxGeometry x="20" y="50" width="260" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1t2" value="solicitacao_matricula_grade_dw_atualizacao" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p1">
+          <mxGeometry x="20" y="95" width="260" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1t3" value="unidades_educacionais_ativas_endereco_contato" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p1">
+          <mxGeometry x="20" y="140" width="260" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1t4" value="unidades_educacionais_infantil_vagas_serie" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p1">
+          <mxGeometry x="20" y="185" width="260" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p1t5" value="unidades_educacionais_infantil_vagas_seriev2" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p1">
+          <mxGeometry x="20" y="230" width="260" height="35" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p2" value="FASE 2 — Preparacao Destino" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;startSize=32;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="380" y="80" width="280" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2t1" value="truncate_fila_da_creche_tables" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;fillColor=#f8cecc;" vertex="1" parent="p2">
+          <mxGeometry x="30" y="120" width="220" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="p2obj" value="Objetivo:&#xa;Limpar completamente as tabelas&#xa;do banco da aplicacao" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;" vertex="1" parent="p2">
+          <mxGeometry x="30" y="190" width="220" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p3" value="FASE 3 — Replicacao" style="swimlane;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;startSize=32;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="80" width="320" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3t1" value="copy_unidades_educacionais_infantil_vagas_serie" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p3">
+          <mxGeometry x="20" y="50" width="280" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3t2" value="copy_unidades_educacionais_ativas_endereco_contato" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p3">
+          <mxGeometry x="20" y="95" width="280" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3t3" value="copy_solicitacao_matricula_grade_dw" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p3">
+          <mxGeometry x="20" y="140" width="280" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3t4" value="copy_solicitacao_matricula_grade_dw_atualizacao" style="rounded=1;whiteSpace=wrap;html=1;fontSize=10;" vertex="1" parent="p3">
+          <mxGeometry x="20" y="185" width="280" height="35" as="geometry"/>
+        </mxCell>
+        <mxCell id="p3obj" value="Objetivo: carrega dados da origem&#xa;e recarrega no banco da aplicacao" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;" vertex="1" parent="p3">
+          <mxGeometry x="20" y="230" width="280" height="40" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="p4" value="FASE 4 — Georreferenciamento" style="swimlane;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;startSize=32;fontStyle=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="1060" y="80" width="280" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4t1" value="add_geom_to_schools" style="rounded=1;whiteSpace=wrap;html=1;fontStyle=1;fontSize=11;fillColor=#ffe6cc;" vertex="1" parent="p4">
+          <mxGeometry x="40" y="100" width="200" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="p4obj" value="Objetivos:&#xa;a) Adicionar geometricas das escolas&#xa;b) Suportar consultas espaciais&#xa;c) Possibilitar visualizacoes em mapas" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;spacingLeft=8;" vertex="1" parent="p4">
+          <mxGeometry x="20" y="165" width="240" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="regras" value="Regras de negocio aplicadas&#xa;-------------------&#xa;- Origem cadastro: tp_origem = 'C'&#xa;- Status ativo: st_solicitacao_atual = 'S'&#xa;- Espera superior a 30 dias&#xa;- Distancia maxima de 2 km&#xa;- Anonimizacao dos identificadores" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="400" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="saude" value="Saude operacional&#xa;-------------------&#xa;Sucesso: ~31.274 | Falha: ~156&#xa;Upstream failed: ~854&#xa;Duracao media: 1m 03s&#xa;Gargalo: unidades_educacionais_* (15-50s)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="480" y="400" width="380" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="f1" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="p1" target="p2">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f2" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="p2" target="p3">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="f3" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=3;endArrow=block;endFill=1;" edge="1" parent="1" source="p3" target="p4">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
