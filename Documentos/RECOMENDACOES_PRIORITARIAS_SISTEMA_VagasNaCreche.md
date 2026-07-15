@@ -124,7 +124,7 @@ As recomendações de **connection pooling** (médio prazo) e **expansão de cac
 
 
 
-## 3. Curto Prazo (0–3 meses) — Segurança e Estabilidade
+## 3. Curto Prazo  — Segurança e Estabilidade
 
 
 
@@ -186,7 +186,7 @@ As recomendações de **connection pooling** (médio prazo) e **expansão de cac
 
 
 
-## 4. Médio Prazo (3–6 meses) — Observabilidade e Resiliência
+## 4. Médio Prazo  — Observabilidade e Resiliência
 
 
 
@@ -244,7 +244,7 @@ As recomendações de **connection pooling** (médio prazo) e **expansão de cac
 
 
 
-## 5. Longo Prazo (6–12 meses) — Modernização
+## 5. Longo Prazo  — Modernização
 
 
 
