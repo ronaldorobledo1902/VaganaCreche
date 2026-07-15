@@ -1,0 +1,594 @@
+<mxfile host="app.diagrams.net" agent="Cursor" pages="8">
+  <diagram id="c4-legend" name="C4">
+    <mxGraphModel dx="1091" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c4-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=18;fontStyle=1;fontColor=#4D4D4D;" value="C4 Model - Legenda de Shapes (SME Vagas na Creche)" vertex="1">
+          <mxGeometry height="30" width="700" x="60" y="10" as="geometry" />
+        </mxCell>
+        <object placeholders="1" c4Name="Person name" c4Type="Person" c4Description="Description of person." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-person">
+          <mxCell parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];resizable=0;" vertex="1">
+            <mxGeometry height="180" width="200" x="30" y="50" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="External person name" c4Type="Person" c4Description="Description of external person." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-ext-person">
+          <mxCell parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#6C6477;strokeColor=#4D4D4D;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0]];resizable=0;" vertex="1">
+            <mxGeometry height="180" width="200" x="270" y="50" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="System name" c4Type="Software System" c4Description="Description of software system." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-system">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#1061B0;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0D5091;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="120" width="240" x="510" y="80" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="External system name" c4Type="Software System" c4Description="Description of external software system." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#cccccc&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-ext-system">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="120" width="240" x="30" y="250" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Container name" c4Type="Container" c4Technology="e.g. SpringBoot, ElasticSearch, etc." c4Description="Description of container role/responsibility." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-container">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;fontSize=11;labelBackgroundColor=none;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="120" width="240" x="294" y="250" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Container name" c4Type="Container" c4Technology="e.g. Micronaut, etc." c4Description="Description of microservice type container role/responsibility." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-hex">
+          <mxCell parent="1" style="shape=hexagon;size=50;perimeter=hexagonPerimeter2;whiteSpace=wrap;html=1;fixedSize=1;rounded=1;labelBackgroundColor=none;fillColor=#23A2D9;fontSize=12;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;metaEdit=1;points=[[0.5,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.5,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];resizable=0;" vertex="1">
+            <mxGeometry height="170" width="200" x="580" y="230" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Container name" c4Type="Container" c4Technology="e.g. Apache Kafka, etc." c4Description="Description of message bus type container role/responsibility." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-db">
+          <mxCell parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;rounded=0;labelBackgroundColor=none;fillColor=#23A2D9;fontSize=12;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;metaEdit=1;points=[[0.5,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.5,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];resizable=0;" vertex="1">
+            <mxGeometry height="120" width="240" x="30" y="390" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Container name" c4Type="Container" c4Technology="e.g. JavaScript, Angular etc." c4Description="Description of web browser container role/responsibility." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;&lt;font color=&quot;#E6E6E6&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-web">
+          <mxCell parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;rounded=0;labelBackgroundColor=none;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontSize=12;fontColor=#ffffff;align=center;metaEdit=1;points=[[0.5,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.5,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];resizable=0;" vertex="1">
+            <mxGeometry height="160" width="240" x="294" y="390" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="Component name" c4Type="Component" c4Technology="e.g. Spring Service" c4Description="Description of component role/responsibility." label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;%c4Name%&lt;/b&gt;&lt;/font&gt;&lt;div&gt;[%c4Type%: %c4Technology%]&lt;/div&gt;&lt;br&gt;&lt;div&gt;&lt;font style=&quot;font-size: 11px&quot;&gt;%c4Description%&lt;/font&gt;&lt;/div&gt;" id="leg-component">
+          <mxCell parent="1" style="rounded=1;whiteSpace=wrap;html=1;labelBackgroundColor=none;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;metaEdit=1;resizable=0;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="120" width="240" x="560" y="420" as="geometry" />
+          </mxCell>
+        </object>
+        <mxCell id="leg-table" parent="1" style="shape=table;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fontSize=16;align=left;verticalAlign=top;fillColor=none;strokeColor=none;fontColor=#4D4D4D;fontStyle=1;spacingLeft=6;spacing=0;resizable=0;" value="Legend" vertex="1">
+          <mxGeometry height="210" width="180" x="50" y="540" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-row1" parent="leg-table" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" value="" vertex="1">
+          <mxGeometry height="30" width="180" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-cell1" parent="leg-row1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#083F75;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=12;align=left;fontColor=#FFFFFF;gradientColor=none;spacingLeft=10;spacingRight=4;" value="Person" vertex="1">
+          <mxGeometry height="30" width="180" as="geometry">
+            <mxRectangle height="30" width="180" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg-row2" parent="leg-table" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" value="" vertex="1">
+          <mxGeometry height="30" width="180" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-cell2" parent="leg-row2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#1061B0;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=12;align=left;fontColor=#FFFFFF;gradientColor=none;spacingLeft=10;spacingRight=4;" value="Software System" vertex="1">
+          <mxGeometry height="30" width="180" as="geometry">
+            <mxRectangle height="30" width="180" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg-row3" parent="leg-table" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" value="" vertex="1">
+          <mxGeometry height="30" width="180" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-cell3" parent="leg-row3" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#23A2D9;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=12;align=left;fontColor=#FFFFFF;gradientColor=none;spacingLeft=10;spacingRight=4;" value="Container" vertex="1">
+          <mxGeometry height="30" width="180" as="geometry">
+            <mxRectangle height="30" width="180" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg-row4" parent="leg-table" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" value="" vertex="1">
+          <mxGeometry height="30" width="180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-cell4" parent="leg-row4" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#63BEF2;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=12;align=left;fontColor=#FFFFFF;gradientColor=none;spacingLeft=10;spacingRight=4;" value="Component" vertex="1">
+          <mxGeometry height="30" width="180" as="geometry">
+            <mxRectangle height="30" width="180" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg-row5" parent="leg-table" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" value="" vertex="1">
+          <mxGeometry height="30" width="180" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-cell5" parent="leg-row5" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#6C6477;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=12;align=left;fontColor=#FFFFFF;gradientColor=none;spacingLeft=10;spacingRight=4;" value="External Person" vertex="1">
+          <mxGeometry height="30" width="180" as="geometry">
+            <mxRectangle height="30" width="180" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="leg-row6" parent="leg-table" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" value="" vertex="1">
+          <mxGeometry height="30" width="180" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="leg-cell6" parent="leg-row6" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=#8C8496;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=12;align=left;fontColor=#FFFFFF;gradientColor=none;spacingLeft=10;spacingRight=4;" value="External Software System" vertex="1">
+          <mxGeometry height="30" width="180" as="geometry">
+            <mxRectangle height="30" width="180" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="ctx-c4" name="AIRFLOW-Contexto VagasNaCreche + Airflow">
+    <mxGraphModel dx="1284" dy="551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ctx-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1;fontColor=#4D4D4D;" value="System Context / Containers - SME Vagas na Creche + Pipeline Airflow" vertex="1">
+          <mxGeometry height="40" width="900" x="250" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-person" parent="1" style="html=1;fontSize=11;dashed=0;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;" value="&lt;b&gt;Cidadao&lt;/b&gt;&lt;div&gt;[Person]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#cccccc&quot; style=&quot;font-size:11px&quot;&gt;Consulta fila e vagas remanescentes&lt;/font&gt;" vertex="1">
+          <mxGeometry height="160" width="180" x="40" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-bound" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=bottom;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="SME Vagas na Creche [Software System]" vertex="1">
+          <mxGeometry height="360" width="720" x="260" y="180" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-fe" parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontSize=11;fontColor=#ffffff;align=center;" value="&lt;b&gt;SPA FrontEnd&lt;/b&gt;&lt;div&gt;[Container: React / Nginx]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#E6E6E6&quot; style=&quot;font-size:11px&quot;&gt;SPA publica /vaga-na-creche&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="290" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;" value="&lt;b&gt;API Vagas na Creche&lt;/b&gt;&lt;div&gt;[Container: Django DRF / K8s]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#E6E6E6&quot; style=&quot;font-size:11px&quot;&gt;API REST fila, vagas e historico&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="530" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-dbvaga" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;" value="&lt;b&gt;db_vaga&lt;/b&gt;&lt;div&gt;[Container: PostgreSQL 12]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#E6E6E6&quot; style=&quot;font-size:11px&quot;&gt;Historico de buscas&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="200" x="300" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-filadb" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;" value="&lt;b&gt;Fila da Creche DB&lt;/b&gt;&lt;div&gt;[Container: PostGIS :5433]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#E6E6E6&quot; style=&quot;font-size:11px&quot;&gt;Fila e geolocalizacao&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="540" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-airflow" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;" value="&lt;b&gt;Apache Airflow&lt;/b&gt;&lt;div&gt;[Software System]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#cccccc&quot; style=&quot;font-size:11px&quot;&gt;DAG fila_da_creche 10h&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="1040" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-ciedu" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;" value="&lt;b&gt;CIEDU DW&lt;/b&gt;&lt;div&gt;[Software System]&lt;/div&gt;&lt;br&gt;&lt;font color=&quot;#cccccc&quot; style=&quot;font-size:11px&quot;&gt;DW educacional (ETL + vagas)&lt;/font&gt;" vertex="1">
+          <mxGeometry height="120" width="220" x="1040" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-e1" edge="1" parent="1" source="ctx-person" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#828282;endArrow=blockThin;endFill=1;fontSize=10;fontColor=#707070;" target="ctx-fe" value="Usa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-e2" edge="1" parent="1" source="ctx-fe" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#828282;endArrow=blockThin;endFill=1;fontSize=10;fontColor=#707070;" target="ctx-api" value="HTTP REST">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-e3" edge="1" parent="1" source="ctx-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#828282;endArrow=blockThin;endFill=1;fontSize=10;fontColor=#707070;" target="ctx-filadb" value="SQL /fila/*">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-e4" edge="1" parent="1" source="ctx-airflow" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#828282;endArrow=blockThin;endFill=1;dashed=1;fontSize=10;fontColor=#707070;" target="ctx-filadb" value="ETL diario">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="790" y="260" />
+              <mxPoint x="790" y="460" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ctx-e5" edge="1" parent="1" source="ctx-ciedu" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=2;strokeColor=#828282;endArrow=blockThin;endFill=1;fontSize=10;fontColor=#707070;" target="ctx-airflow" value="extract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-e8" edge="1" parent="1" source="ctx-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#828282;endArrow=blockThin;endFill=1;dashed=1;fontSize=10;fontColor=#707070;" target="ctx-dbvaga" value="ORM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ctx-e9" edge="1" parent="1" source="ctx-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#828282;endArrow=blockThin;endFill=1;dashed=1;fontSize=10;fontColor=#707070;" target="ctx-ciedu" value="SQL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="dag-c4" name="ARFLOW- Dag Fila da Creche">
+    <mxGraphModel dx="1039" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="dag-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=14;fontStyle=1;fontColor=#4D4D4D;" value="DAG fila_da_creche - 11 tasks | Schedule 0 10 * * * | ~1 min | BashOperator + PostgresOperator" vertex="1">
+          <mxGeometry height="30" width="1000" x="80" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-fase1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=top;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="FASE 1 - Extracao (paralelo)" vertex="1">
+          <mxGeometry height="220" width="520" x="40" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="solicitacao_&#xa;matricula_grade_dw&#xa;[Component]" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="solicitacao_&#xa;matricula_grade_dw_&#xa;atualizacao" vertex="1">
+          <mxGeometry height="60" width="120" x="200" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="unidades_educacionais_&#xa;ativas_endereco_contato" vertex="1">
+          <mxGeometry height="60" width="120" x="340" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="unidades_educacionais_&#xa;infantil_vagas_serie" vertex="1">
+          <mxGeometry height="60" width="120" x="480" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="unidades_educacionais_&#xa;infantil_vagas_serie_v2" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-fase2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=top;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="FASE 2 - Limpeza" vertex="1">
+          <mxGeometry height="200" width="180" x="600" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=11;fontStyle=1;" value="truncate_fila_&#xa;da_creche_tables" vertex="1">
+          <mxGeometry height="70" width="140" x="620" y="130" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-fase3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=top;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="FASE 3 - Carga (sequencial)" vertex="1">
+          <mxGeometry height="130" width="740" x="40" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="copy_unidades_&#xa;educacionais_infantil_&#xa;vagas_serie" vertex="1">
+          <mxGeometry height="60" width="120" x="60" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="copy_unidades_&#xa;educacionais_ativas_&#xa;endereco_contato" vertex="1">
+          <mxGeometry height="60" width="120" x="210" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="copy_solicitacao_&#xa;matricula_grade_dw" vertex="1">
+          <mxGeometry height="60" width="120" x="360" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="copy_solicitacao_&#xa;matricula_grade_dw_&#xa;atualizacao" vertex="1">
+          <mxGeometry height="60" width="120" x="510" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-t11" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;fontStyle=1;" value="add_geom_&#xa;to_schools&#xa;(PostGIS)" vertex="1">
+          <mxGeometry height="60" width="100" x="660" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-stats" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="Estatisticas (Airflow UI)&#xa;-------------------&#xa;Sucesso: 31.274&#xa;Falha: 156&#xa;Upstream failed: 854&#xa;Duracao media: 1m 03s&#xa;&#xa;Gargalo: unidades_educacionais_* (15-50s)" vertex="1">
+          <mxGeometry height="140" width="240" x="40" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-meta" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="Metadados DAG&#xa;-------------------&#xa;fileloc: /data/ciedu-workflows/dags/fila_da_creche.py&#xa;owner: airflow | retries: 2&#xa;start_date: 2018-06-20&#xa;timezone: America/Sao_Paulo&#xa;catchup: True | concurrency: 16" vertex="1">
+          <mxGeometry height="140" width="300" x="290" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-dest" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=left;spacingLeft=8;strokeColor=#0E7DAD;fontSize=11;" value="Destino final [Container]&#xa;Conn: fila_da_creche_api_do&#xa;Host: 10.50.1.45:5432&#xa;API via FILADB_* (:5433)" vertex="1">
+          <mxGeometry height="120" width="220" x="620" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-e16" edge="1" parent="1" source="dag-t1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-e18" edge="1" parent="1" source="dag-t2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="260" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dag-e20" edge="1" parent="1" source="dag-t4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="dag-t6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="540" y="280" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dag-e21" edge="1" parent="1" source="dag-t5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-e22" edge="1" parent="1" source="dag-t6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t7">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="690" y="300" />
+              <mxPoint x="120" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dag-e23" edge="1" parent="1" source="dag-t7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-e24" edge="1" parent="1" source="dag-t8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-e25" edge="1" parent="1" source="dag-t9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="dag-e26" edge="1" parent="1" source="dag-t10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="etl-c4" name="ARFLOW-Fluxo ETL Diario">
+    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="etl-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#4D4D4D;" value="Fluxo ETL Diario - DAG fila_da_creche (truncate-and-load)" vertex="1">
+          <mxGeometry height="30" width="700" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-trigger" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;" value="Trigger&#xa;Cron 0 10 * * *&#xa;10:00 BRT&#xa;[Component]" vertex="1">
+          <mxGeometry height="70" width="120" x="40" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-extract" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;" value="1. EXTRACT (paralelo)&#xa;&#xa;CIEDU DW via Bash+Postgres&#xa;Export para /data/tmp/&#xa;[Component]" vertex="1">
+          <mxGeometry height="110" width="200" x="220" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-truncate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;fontStyle=1;" value="2. TRUNCATE&#xa;&#xa;truncate_fila_da_&#xa;creche_tables&#xa;&#xa;Limpa tabelas destino" vertex="1">
+          <mxGeometry height="110" width="180" x="480" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-load" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;" value="3. LOAD (sequencial)&#xa;&#xa;copy_unidades_*&#xa;copy_solicitacao_*" vertex="1">
+          <mxGeometry height="110" width="200" x="720" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-enrich" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;fontStyle=1;" value="4. ENRIQUECER&#xa;&#xa;add_geom_to_schools&#xa;&#xa;Geometria PostGIS" vertex="1">
+          <mxGeometry height="110" width="160" x="980" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-db" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;fontStyle=1;" value="PostgreSQL&#xa;Fila da Creche&#xa;(PostGIS)&#xa;[Container]" vertex="1">
+          <mxGeometry height="100" width="160" x="980" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontStyle=1;" value="API Django&#xa;GET /fila/*&#xa;FilaDBConnection&#xa;[Container]" vertex="1">
+          <mxGeometry height="80" width="160" x="980" y="380" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-fe" parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontColor=#ffffff;align=center;" value="FrontEnd React&#xa;Mapa + Fila de espera&#xa;[Container]" vertex="1">
+          <mxGeometry height="100" width="160" x="980" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-risk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="RISCOS OPERACIONAIS&#xa;-------------------&#xa;[!] Janela truncate: dados vazios durante carga&#xa;[!] Catchup=True: backfill de execucoes perdidas&#xa;[!] 854 upstream_failed: falhas em cascata&#xa;[!] Tasks unidades_educacionais: 15-50s (gargalo)" vertex="1">
+          <mxGeometry height="120" width="380" x="40" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-timing" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="TIMING&#xa;-------------------&#xa;Inicio DAG: 10:00 BRT&#xa;Duracao media: ~1 min&#xa;API updated_at: dia anterior 09:00&#xa;(calculado em dt_atualizacao.py)" vertex="1">
+          <mxGeometry height="110" width="380" x="440" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-tables" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="TABELAS (inferidas pelas tasks)&#xa;-------------------&#xa;- solicitacao_matricula_grade_dw&#xa;- unidades_educacionais_ativas_endereco_contato&#xa;- unidades_educacionais_infantil_vagas_serie&#xa;+ coluna geometry (add_geom_to_schools)" vertex="1">
+          <mxGeometry height="120" width="380" x="40" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e1" edge="1" parent="1" source="etl-trigger" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="etl-extract">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e2" edge="1" parent="1" source="etl-extract" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="etl-truncate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e3" edge="1" parent="1" source="etl-truncate" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="etl-load">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e4" edge="1" parent="1" source="etl-load" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="etl-enrich">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e5" edge="1" parent="1" source="etl-enrich" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="etl-db" value="persist">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e6" edge="1" parent="1" source="etl-db" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;dashed=1;" target="etl-api" value="read">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="etl-e7" edge="1" parent="1" source="etl-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="etl-fe" value="HTTP">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="arch-c4" name="SISTEMA -Diagrama de Arquitetura">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="arch-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=18;fontStyle=1;fontColor=#4D4D4D;" value="Container Diagram - SME Vagas na Creche" vertex="1">
+          <mxGeometry height="40" width="700" x="300" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-person" parent="1" style="html=1;fontSize=11;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;" value="&lt;b&gt;Cidadao&lt;/b&gt;&lt;div&gt;[Person]&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="150" x="40" y="90" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-bound" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=bottom;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="SME Vagas na Creche" vertex="1">
+          <mxGeometry height="400" width="760" x="230" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-fe" parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontColor=#ffffff;align=center;fontSize=11;" value="&lt;b&gt;SPA FrontEnd&lt;/b&gt;&lt;div&gt;[Container: React / Nginx]&lt;/div&gt;&lt;br&gt;/vaga-na-creche" vertex="1">
+          <mxGeometry height="120" width="180" x="260" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-nginx" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontSize=11;" value="&lt;b&gt;Nginx API&lt;/b&gt;&lt;div&gt;[Container: :80]&lt;/div&gt;&lt;br&gt;reverse proxy" vertex="1">
+          <mxGeometry height="90" width="150" x="500" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontSize=11;" value="&lt;b&gt;Gunicorn Django&lt;/b&gt;&lt;div&gt;[Container: DRF :8000]&lt;/div&gt;&lt;br&gt;8 workers" vertex="1">
+          <mxGeometry height="90" width="160" x="700" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-dbvaga" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;fontSize=10;" value="&lt;b&gt;db_vaga&lt;/b&gt;&#xa;[Container]&#xa;PostgreSQL 12" vertex="1">
+          <mxGeometry height="100" width="140" x="280" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-ciedu" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#8C8496;fontColor=#ffffff;align=center;strokeColor=#736782;fontSize=10;" value="&lt;b&gt;CIEDUDW&lt;/b&gt;&#xa;[Software System]&#xa;Data Warehouse" vertex="1">
+          <mxGeometry height="100" width="140" x="450" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-filadb" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;fontSize=10;" value="&lt;b&gt;Fila DB&lt;/b&gt;&#xa;[Container]&#xa;PostGIS" vertex="1">
+          <mxGeometry height="100" width="140" x="620" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-redis" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;fontSize=10;" value="&lt;b&gt;Redis 3.2&lt;/b&gt;&#xa;[Container]&#xa;Cache" vertex="1">
+          <mxGeometry height="100" width="130" x="790" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-pelias" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="&lt;b&gt;Pelias&lt;/b&gt;&#xa;[Software System]&#xa;/v1/search" vertex="1">
+          <mxGeometry height="80" width="140" x="40" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-osm" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="&lt;b&gt;OpenStreetMap&lt;/b&gt;&#xa;[Software System]&#xa;tiles" vertex="1">
+          <mxGeometry height="80" width="140" x="40" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-ga" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="&lt;b&gt;Google Analytics&lt;/b&gt;&#xa;[Software System]" vertex="1">
+          <mxGeometry height="70" width="140" x="40" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-jenkins" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;" value="&lt;b&gt;Jenkins CI/CD&lt;/b&gt;&#xa;[Software System]" vertex="1">
+          <mxGeometry height="70" width="160" x="280" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-registry" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="&lt;b&gt;Registry SME&lt;/b&gt;&#xa;[Software System]&#xa;registry.sme..." vertex="1">
+          <mxGeometry height="70" width="180" x="480" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-telegram" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;" value="&lt;b&gt;Telegram&lt;/b&gt;&#xa;[Software System]" vertex="1">
+          <mxGeometry height="70" width="150" x="700" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-stack" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2;fontColor=#666666;" value="Stack: React 16 | Django 2.2 DRF | PostgreSQL 12 | Redis 3.2 | Nginx | Gunicorn 19.9 | K8s + Jenkins" vertex="1">
+          <mxGeometry height="30" width="900" x="200" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e1" edge="1" parent="1" source="arch-person" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-fe" value="Usa">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e2" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-nginx" value="HTTP REST">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e3" edge="1" parent="1" source="arch-nginx" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="arch-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e4" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-dbvaga" value="ORM">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e5" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-ciedu" value="SQL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e6" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-filadb" value="SQL">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e7" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-redis" value="Cache">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e8" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-pelias" value="HTTPS">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e9" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;" target="arch-osm">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e10" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;" target="arch-ga">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e11" edge="1" parent="1" source="arch-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-registry" value="Push image">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e12" edge="1" parent="1" source="arch-registry" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-fe" value="Deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e13" edge="1" parent="1" source="arch-registry" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-api" value="Deploy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="arch-e14" edge="1" parent="1" source="arch-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-telegram" value="Notify">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="risk-c4" name="SISTEMA -Matriz Risco de Seguranca">
+    <mxGraphModel dx="1284" dy="551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="risk-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#4D4D4D;" value="3.6 - Matriz de Risco de Seguranca" vertex="1">
+          <mxGeometry height="30" width="500" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-axis-x" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2;fontColor=#666666;" value="Baixo Impacto  ------------------------------  Alto Impacto" vertex="1">
+          <mxGeometry height="20" width="540" x="180" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-axis-y1" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;fontColor=#666666;" value="Alta&#xa;Prob." vertex="1">
+          <mxGeometry height="40" width="60" x="100" y="200" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-axis-y2" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;fontColor=#666666;" value="Baixa&#xa;Prob." vertex="1">
+          <mxGeometry height="40" width="60" x="100" y="400" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-q1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;strokeColor=#2086C9;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="Monitorar&#xa;&#xa;Swagger publico" vertex="1">
+          <mxGeometry height="180" width="260" x="180" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-q2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1061B0;strokeColor=#0D5091;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="Mitigar urgentemente&#xa;&#xa;SQL Injection&#xa;Stack EOL&#xa;CORS aberto" vertex="1">
+          <mxGeometry height="180" width="260" x="460" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-q3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;strokeColor=#736782;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="Aceitar&#xa;&#xa;(nenhum)" vertex="1">
+          <mxGeometry height="180" width="260" x="180" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-q4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;strokeColor=#0E7DAD;fontColor=#ffffff;fontStyle=1;fontSize=12;" value="Planejar correcao&#xa;&#xa;API sem auth&#xa;Sem rate limit" vertex="1">
+          <mxGeometry height="180" width="260" x="460" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="risk-note" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="Controles existentes vs ausentes&#xa;-------------------&#xa;OK: CSRF, X-Frame-Options, Security Middleware&#xa;FALTA: Auth JWT, CORS restritivo, Rate limit&#xa;FALTA: Parametrizacao SQL, validacao lat/lon&#xa;Swagger publico sem autenticacao" vertex="1">
+          <mxGeometry height="80" width="540" x="180" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="cicd-c4" name="SISTEMA - Pipeline CI/CD">
+    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cicd-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#4D4D4D;" value="3.7 - Pipeline CI/CD (Jenkins + Kubernetes)" vertex="1">
+          <mxGeometry height="30" width="600" x="250" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-git" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontStyle=1;" value="Push Git&#xa;[Component]" vertex="1">
+          <mxGeometry height="50" width="100" x="40" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-jenkins" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontStyle=1;" value="Jenkins Pipeline&#xa;[Software System]" vertex="1">
+          <mxGeometry height="50" width="140" x="180" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-quality" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="JSHint /&#xa;SonarQube&#xa;[Component]" vertex="1">
+          <mxGeometry height="60" width="110" x="360" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-docker" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="Docker Build&#xa;[Component]" vertex="1">
+          <mxGeometry height="50" width="110" x="360" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-registry" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="Registry SME&#xa;registry.sme.&#xa;prefeitura.sp.gov.br&#xa;[Software System]" vertex="1">
+          <mxGeometry height="70" width="150" x="510" y="110" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-kubectl" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontStyle=1;fontSize=10;" value="kubectl&#xa;rollout restart&#xa;[Component]" vertex="1">
+          <mxGeometry height="60" width="120" x="700" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-telegram" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="Notificacao&#xa;Telegram&#xa;[Software System]" vertex="1">
+          <mxGeometry height="60" width="110" x="860" y="115" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-bound" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=bottom;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="Ambientes Kubernetes" vertex="1">
+          <mxGeometry height="140" width="700" x="180" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-dev" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontSize=10;" value="vaganacreche-dev&#xa;branch: develop&#xa;[Container]" vertex="1">
+          <mxGeometry height="60" width="140" x="210" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-hom" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontSize=10;" value="vaganacreche-hom&#xa;branch: homolog&#xa;[Container]" vertex="1">
+          <mxGeometry height="60" width="140" x="370" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-hom2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontSize=10;" value="vaganacreche-hom2&#xa;branch: homolog-r2&#xa;[Container]" vertex="1">
+          <mxGeometry height="60" width="140" x="530" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-prd" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontSize=10;fontStyle=1;" value="sme-vaganacreche&#xa;branch: master/main&#xa;[Container]" vertex="1">
+          <mxGeometry height="60" width="140" x="690" y="320" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;fontColor=#666666;" value="Repositorios: SME-VagasNaCreche-API + SME-VagasNaCreche-FrontEnd&#xa;Comunicacao: exclusivamente sincrona HTTP (sem mensageria)" vertex="1">
+          <mxGeometry height="40" width="700" x="200" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e1" edge="1" parent="1" source="cicd-git" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-jenkins">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e2" edge="1" parent="1" source="cicd-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-quality">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e3" edge="1" parent="1" source="cicd-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-docker">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e4" edge="1" parent="1" source="cicd-quality" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-registry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e5" edge="1" parent="1" source="cicd-docker" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-registry">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e6" edge="1" parent="1" source="cicd-registry" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-kubectl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e7" edge="1" parent="1" source="cicd-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;" target="cicd-telegram">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e8" edge="1" parent="1" source="cicd-kubectl" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-bound">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="cicd-e9" edge="1" parent="1" source="cicd-kubectl" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;" target="cicd-telegram">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="aval-c4" name="SISTEMA - AVALIACAO CONSOLIDADA">
+    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="aval-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#4D4D4D;" value="5. Avaliacao Consolidada - SME Vagas na Creche" vertex="1">
+          <mxGeometry height="30" width="600" x="200" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;strokeColor=#0E7DAD;fontColor=#ffffff;fontSize=11;" value="Funcionalidade&#xa;Adequada&#xa;&#xa;Atende consulta publica" vertex="1">
+          <mxGeometry height="80" width="160" x="80" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;fontStyle=1;fontSize=11;" value="Seguranca&#xa;CRITICA&#xa;&#xa;SQL injection, CORS, sem auth" vertex="1">
+          <mxGeometry height="80" width="160" x="280" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1061B0;strokeColor=#0D5091;fontColor=#ffffff;fontSize=11;" value="Resiliencia&#xa;Baixa&#xa;&#xa;SPOFs, sem retry/health" vertex="1">
+          <mxGeometry height="80" width="160" x="480" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;strokeColor=#2086C9;fontColor=#ffffff;fontSize=11;" value="Performance&#xa;Media&#xa;&#xa;Cache minimo, sem pool DW" vertex="1">
+          <mxGeometry height="80" width="160" x="680" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1061B0;strokeColor=#0D5091;fontColor=#ffffff;fontSize=11;" value="Observabilidade&#xa;Baixa&#xa;&#xa;Logs container, alertas deploy" vertex="1">
+          <mxGeometry height="80" width="160" x="80" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;strokeColor=#736782;fontColor=#ffffff;fontSize=11;" value="Manutenibilidade&#xa;Media-Baixa&#xa;&#xa;Stack EOL, poucos testes" vertex="1">
+          <mxGeometry height="80" width="160" x="280" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;strokeColor=#0E7DAD;fontColor=#ffffff;fontStyle=1;fontSize=11;" value="DevOps / Deploy&#xa;Boa&#xa;&#xa;Docker, Jenkins, K8s" vertex="1">
+          <mxGeometry height="80" width="160" x="480" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-8" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;strokeColor=#2086C9;fontColor=#ffffff;fontSize=11;" value="Escalabilidade&#xa;Media&#xa;&#xa;8 workers Gunicorn, limitada por DW" vertex="1">
+          <mxGeometry height="80" width="160" x="680" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-leg" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="Paleta C4&#xa;#23A2D9 Container/Bom&#xa;#63BEF2 Component/Media&#xa;#8C8496 External/Atencao&#xa;#1061B0 System/Baixa&#xa;#083F75 Person/Critico" vertex="1">
+          <mxGeometry height="120" width="220" x="80" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-prio" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="Prioridades (secao 6)&#xa;-------------------&#xa;Curto prazo: SQL injection, health checks, CORS&#xa;Medio prazo: logging, APM, connection pool, cache&#xa;Longo prazo: upgrade stack, React Query, testes" vertex="1">
+          <mxGeometry height="120" width="500" x="340" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="aval-conn" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=10;" value="3.1 - Conexoes (resumo)&#xa;-------------------&#xa;FrontEnd -&gt; API: HTTP/REST (Axios)&#xa;FrontEnd -&gt; Pelias, OSM, GA: HTTPS&#xa;API -&gt; db_vaga: Django ORM&#xa;API -&gt; CIEDUDW / Fila: psycopg2 connect-per-query&#xa;API -&gt; Redis: django-redis (1 endpoint cacheado)" vertex="1">
+          <mxGeometry height="120" width="760" x="80" y="490" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
