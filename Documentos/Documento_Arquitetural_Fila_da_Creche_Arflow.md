@@ -38,47 +38,57 @@ O processo realiza anonimização dos identificadores das solicitações antes d
 
 ## 4. Arquitetura Lógica
 
-```text
-[EOL / RAW_EOl]
-      |
-      v
-[CIEDU DW]
-      |
-      v
-[Airflow DAG]
-      |
-      v
-[Banco Fila da Creche]
-      |
-      v
-[Portal/API Pública]
+```mermaid
+flowchart TB
+    subgraph Origem["Camada de Origem"]
+        EOL[EOL / RAW_EOL]
+        DW[(CIEDU DW<br/>Data Warehouse)]
+    end
+
+    subgraph Processamento["Camada de Processamento"]
+        Airflow[Airflow DAG<br/>fila_da_creche]
+    end
+
+    subgraph Destino["Camada de Destino"]
+        FilaDB[(Banco Fila da Creche<br/>PostgreSQL + PostGIS)]
+        Portal[Portal / API Pública]
+    end
+
+    EOL --> DW
+    DW -->|extract| Airflow
+    Airflow -->|truncate + load + geom| FilaDB
+    FilaDB -->|leitura| Portal
 ```
 
 
 
 ## 5. Arquitetura Física
 
-```text
-AIRFLOW
-/data/ciedu-workflows
-        |
-        v
-CIEDU_DW (PostgreSQL)
-potamac.educacao.intranet:5432
-        |
-        v
-/tmp/fdc_dump.sql
-        |
-        v
-fila_da_creche_api_do (PostgreSQL)
-10.50.1.45:5432
+```mermaid
+flowchart TB
+    subgraph AirflowHost["Airflow"]
+        Repo["/data/ciedu-workflows"]
+        Tmp["/tmp/fdc_dump.sql"]
+    end
+
+    subgraph OrigemDB["Origem"]
+        CIEDU[(CIEDU_DW PostgreSQL<br/>potomac.educacao.intranet:5432)]
+    end
+
+    subgraph DestinoDB["Destino"]
+        FilaAPI[(fila_da_creche_api_do<br/>PostgreSQL<br/>10.50.1.45:5432)]
+    end
+
+    Repo --> CIEDU
+    CIEDU -->|extract| Tmp
+    Tmp -->|pg_dump / copy| FilaAPI
 ```
 
-Objetivo
+**Objetivo**
 
 - Construir fatos e dimensões
 - Consolidar
-- Preparar Informação para dvulgação pública
+- Preparar informação para divulgação pública
 
 
 
@@ -125,35 +135,40 @@ c - Possibiltar visualizações em mapas
 
 ## 7. Fluxo da DAG
 
-```text
-solicitacao_matricula_grade_dw
-            |
-            v
-unidades_educacionais_infantil_vagas_seriev2
-            |
-            +-------------------------+
-                                      |
-solicitacao_matricula_grade_dw_atualizacao
-unidades_educacionais_ativas_endereco_contato
-unidades_educacionais_infantil_vagas_serie
-                                      |
-                                      v
-truncate_fila_da_creche_tables
-                                      |
-                                      v
-copy_unidades_educacionais_infantil_vagas_serie
-                                      |
-                                      v
-copy_unidades_educacionais_ativas_endereco_contato
-                                      |
-                                      v
-copy_solicitacao_matricula_grade_dw
-                                      |
-                                      v
-copy_solicitacao_matricula_grade_dw_atualizacao
-                                      |
-                                      v
-add_geom_to_schools
+```mermaid
+flowchart TB
+    subgraph Fase1["FASE 1 — Extração (paralelo)"]
+        T1[solicitacao_matricula_grade_dw]
+        T2[solicitacao_matricula_grade_dw_atualizacao]
+        T3[unidades_educacionais_ativas_endereco_contato]
+        T4[unidades_educacionais_infantil_vagas_serie]
+        T5[unidades_educacionais_infantil_vagas_seriev2]
+    end
+
+    subgraph Fase2["FASE 2 — Limpeza"]
+        T6[truncate_fila_da_creche_tables]
+    end
+
+    subgraph Fase3["FASE 3 — Carga (sequencial)"]
+        T7[copy_unidades_educacionais_infantil_vagas_serie]
+        T8[copy_unidades_educacionais_ativas_endereco_contato]
+        T9[copy_solicitacao_matricula_grade_dw]
+        T10[copy_solicitacao_matricula_grade_dw_atualizacao]
+        T11[add_geom_to_schools]
+    end
+
+    T1 --> T5
+    T1 --> T6
+    T2 --> T6
+    T3 --> T6
+    T4 --> T6
+    T5 --> T6
+
+    T6 --> T7
+    T7 --> T8
+    T8 --> T9
+    T9 --> T10
+    T10 --> T11
 ```
 
 
