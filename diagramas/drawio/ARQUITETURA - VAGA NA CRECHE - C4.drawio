@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Cursor" pages="8">
+<mxfile host="Electron" agent="Cursor" pages="8">
   <diagram id="c4-legend" name="C4">
     <mxGraphModel dx="1091" dy="468" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -107,7 +107,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="ctx-c4" name="AIRFLOW-Contexto VagasNaCreche + Airflow">
-    <mxGraphModel dx="1284" dy="551" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="1293" dy="622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -162,13 +162,18 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="ctx-e9" edge="1" parent="1" source="ctx-api" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeWidth=1;strokeColor=#828282;endArrow=blockThin;endFill=1;dashed=1;fontSize=10;fontColor=#707070;" target="ctx-ciedu" value="SQL">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" x="-0.0203" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1060" y="340" />
+            </Array>
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram id="dag-c4" name="ARFLOW- Dag Fila da Creche">
-    <mxGraphModel dx="1039" dy="446" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1099" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -184,7 +189,12 @@
         <mxCell id="dag-t2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="solicitacao_&#xa;matricula_grade_dw_&#xa;atualizacao" vertex="1">
           <mxGeometry height="60" width="120" x="200" y="110" as="geometry" />
         </mxCell>
-        <mxCell id="dag-t3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="unidades_educacionais_&#xa;ativas_endereco_contato" vertex="1">
+        <mxCell id="T6-kUMP6VorXgfiRGFji-3" edge="1" parent="1" source="dag-t3" style="edgeStyle=none;shape=wire;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;endArrow=none;endFill=0;strokeWidth=2;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="220" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="dag-t3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=0;strokeColor=#2086C9;fontSize=10;" value="unidades_educacionais_&#xa;ativas_endereco_contato" vertex="1">
           <mxGeometry height="60" width="120" x="340" y="110" as="geometry" />
         </mxCell>
         <mxCell id="dag-t4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;fontSize=10;" value="unidades_educacionais_&#xa;infantil_vagas_serie" vertex="1">
@@ -218,13 +228,13 @@
           <mxGeometry height="60" width="100" x="660" y="360" as="geometry" />
         </mxCell>
         <mxCell id="dag-stats" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="Estatisticas (Airflow UI)&#xa;-------------------&#xa;Sucesso: 31.274&#xa;Falha: 156&#xa;Upstream failed: 854&#xa;Duracao media: 1m 03s&#xa;&#xa;Gargalo: unidades_educacionais_* (15-50s)" vertex="1">
-          <mxGeometry height="140" width="240" x="40" y="610" as="geometry" />
+          <mxGeometry height="140" width="240" x="40" y="460" as="geometry" />
         </mxCell>
         <mxCell id="dag-meta" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="Metadados DAG&#xa;-------------------&#xa;fileloc: /data/ciedu-workflows/dags/fila_da_creche.py&#xa;owner: airflow | retries: 2&#xa;start_date: 2018-06-20&#xa;timezone: America/Sao_Paulo&#xa;catchup: True | concurrency: 16" vertex="1">
-          <mxGeometry height="140" width="300" x="290" y="610" as="geometry" />
+          <mxGeometry height="140" width="300" x="290" y="460" as="geometry" />
         </mxCell>
         <mxCell id="dag-dest" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=left;spacingLeft=8;strokeColor=#0E7DAD;fontSize=11;" value="Destino final [Container]&#xa;Conn: fila_da_creche_api_do&#xa;Host: 10.50.1.45:5432&#xa;API via FILADB_* (:5433)" vertex="1">
-          <mxGeometry height="120" width="220" x="620" y="500" as="geometry" />
+          <mxGeometry height="110" width="200" x="600" y="470" as="geometry" />
         </mxCell>
         <mxCell id="dag-e16" edge="1" parent="1" source="dag-t1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t5">
           <mxGeometry relative="1" as="geometry" />
@@ -232,24 +242,30 @@
         <mxCell id="dag-e18" edge="1" parent="1" source="dag-t2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t6">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="260" y="280" />
+              <mxPoint x="260" y="220" />
+              <mxPoint x="690" y="220" />
             </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="dag-e20" edge="1" parent="1" source="dag-t4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;entryX=0;entryY=1;entryDx=0;entryDy=0;" target="dag-t6">
+        <mxCell id="dag-e20" edge="1" parent="1" source="dag-t4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=none;curved=0;startArrow=none;startFill=0;endFill=0;">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="540" y="280" />
+              <mxPoint x="540" y="220" />
             </Array>
+            <mxPoint x="560" y="220" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="dag-e21" edge="1" parent="1" source="dag-t5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t6">
-          <mxGeometry relative="1" as="geometry" />
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="660" y="250" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="dag-e22" edge="1" parent="1" source="dag-t6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeWidth=2;strokeColor=#828282;endArrow=classic;" target="dag-t7">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="690" y="300" />
+              <mxPoint x="720" y="300" />
               <mxPoint x="120" y="300" />
             </Array>
           </mxGeometry>
@@ -270,35 +286,35 @@
     </mxGraphModel>
   </diagram>
   <diagram id="etl-c4" name="ARFLOW-Fluxo ETL Diario">
-    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1229" dy="756" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="etl-title" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=16;fontStyle=1;fontColor=#4D4D4D;" value="Fluxo ETL Diario - DAG fila_da_creche (truncate-and-load)" vertex="1">
           <mxGeometry height="30" width="700" x="200" y="20" as="geometry" />
         </mxCell>
-        <mxCell id="etl-trigger" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;" value="Trigger&#xa;Cron 0 10 * * *&#xa;10:00 BRT&#xa;[Component]" vertex="1">
+        <mxCell id="etl-trigger" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=center;arcSize=6;strokeColor=#2086C9;" value="Trigger&lt;br&gt;Cron 0 10 * * *&lt;br&gt;10:00 BRT" vertex="1">
           <mxGeometry height="70" width="120" x="40" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="etl-extract" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;" value="1. EXTRACT (paralelo)&#xa;&#xa;CIEDU DW via Bash+Postgres&#xa;Export para /data/tmp/&#xa;[Component]" vertex="1">
+        <mxCell id="etl-extract" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;" value="1. EXTRACT (paralelo)&lt;br&gt;&lt;br&gt;CIEDU DW via Bash+Postgres&lt;br&gt;Export para /data/tmp/" vertex="1">
           <mxGeometry height="110" width="200" x="220" y="60" as="geometry" />
         </mxCell>
         <mxCell id="etl-truncate" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;fontStyle=1;" value="2. TRUNCATE&#xa;&#xa;truncate_fila_da_&#xa;creche_tables&#xa;&#xa;Limpa tabelas destino" vertex="1">
           <mxGeometry height="110" width="180" x="480" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="etl-load" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;" value="3. LOAD (sequencial)&#xa;&#xa;copy_unidades_*&#xa;copy_solicitacao_*" vertex="1">
-          <mxGeometry height="110" width="200" x="720" y="60" as="geometry" />
+        <mxCell id="etl-load" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=light-dark(#f5f5f5, #ededed);align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;" value="&lt;font style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;3. LOAD&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;(sequencial)&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;copy_unidades_educacionais_&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;infantil_vagas_serie&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;copy_unidades_educacionais_&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;ativas_endereco_contato&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;copy_solicitacao_matricula_&lt;/span&gt;&lt;br style=&quot;&quot;&gt;&lt;span style=&quot;&quot;&gt;grade_dw (+ atualizacao)&lt;/span&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="140" width="200" x="720" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="etl-enrich" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;fontStyle=1;" value="4. ENRIQUECER&#xa;&#xa;add_geom_to_schools&#xa;&#xa;Geometria PostGIS" vertex="1">
+        <mxCell id="etl-enrich" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#63BEF2;fontColor=#ffffff;align=left;spacingLeft=8;arcSize=6;strokeColor=#2086C9;fontSize=11;fontStyle=1;" value="4. ENRIQUECER&lt;br&gt;&lt;br&gt;add_geom_to_schools&lt;br&gt;&lt;br&gt;Geometria PostGI para consultas espaciais" vertex="1">
           <mxGeometry height="110" width="160" x="980" y="60" as="geometry" />
         </mxCell>
-        <mxCell id="etl-db" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;fontStyle=1;" value="PostgreSQL&#xa;Fila da Creche&#xa;(PostGIS)&#xa;[Container]" vertex="1">
+        <mxCell id="etl-db" parent="1" style="shape=cylinder3;size=15;direction=south;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;strokeColor=#0E7DAD;fontStyle=1;" value="PostgreSQL&lt;br&gt;Fila da Creche&lt;br&gt;(PostGIS)" vertex="1">
           <mxGeometry height="100" width="160" x="980" y="230" as="geometry" />
         </mxCell>
-        <mxCell id="etl-api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontStyle=1;" value="API Django&#xa;GET /fila/*&#xa;FilaDBConnection&#xa;[Container]" vertex="1">
+        <mxCell id="etl-api" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#23A2D9;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#0E7DAD;fontStyle=1;" value="API Django&lt;br&gt;GET /fila/*&lt;br&gt;FilaDBConnection" vertex="1">
           <mxGeometry height="80" width="160" x="980" y="380" as="geometry" />
         </mxCell>
-        <mxCell id="etl-fe" parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontColor=#ffffff;align=center;" value="FrontEnd React&#xa;Mapa + Fila de espera&#xa;[Container]" vertex="1">
+        <mxCell id="etl-fe" parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontColor=#ffffff;align=center;" value="FrontEnd React&lt;br&gt;Mapa + Fila de espera" vertex="1">
           <mxGeometry height="100" width="160" x="980" y="500" as="geometry" />
         </mxCell>
         <mxCell id="etl-risk" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=#666666;align=left;spacingLeft=10;fontSize=11;" value="RISCOS OPERACIONAIS&#xa;-------------------&#xa;[!] Janela truncate: dados vazios durante carga&#xa;[!] Catchup=True: backfill de execucoes perdidas&#xa;[!] 854 upstream_failed: falhas em cascata&#xa;[!] Tasks unidades_educacionais: 15-50s (gargalo)" vertex="1">
@@ -335,7 +351,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="arch-c4" name="SISTEMA -Diagrama de Arquitetura">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1374" dy="661" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -345,8 +361,8 @@
         <mxCell id="arch-person" parent="1" style="html=1;fontSize=11;whiteSpace=wrap;fillColor=#083F75;strokeColor=#06315C;fontColor=#ffffff;shape=mxgraph.c4.person2;align=center;" value="&lt;b&gt;Cidadao&lt;/b&gt;&lt;div&gt;[Person]&lt;/div&gt;" vertex="1">
           <mxGeometry height="140" width="150" x="40" y="90" as="geometry" />
         </mxCell>
-        <mxCell id="arch-bound" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=bottom;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="SME Vagas na Creche" vertex="1">
-          <mxGeometry height="400" width="760" x="230" y="70" as="geometry" />
+        <mxCell id="arch-bound" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#666666;fontColor=#666666;align=left;verticalAlign=bottom;dashed=1;dashPattern=8 4;fontSize=12;fontStyle=2;" value="Camada de Dadis" vertex="1">
+          <mxGeometry height="140" width="760" x="230" y="290" as="geometry" />
         </mxCell>
         <mxCell id="arch-fe" parent="1" style="shape=mxgraph.c4.webBrowserContainer2;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#23A2D9;strokeColor=#118ACD;strokeColor2=#0E7DAD;fontColor=#ffffff;align=center;fontSize=11;" value="&lt;b&gt;SPA FrontEnd&lt;/b&gt;&lt;div&gt;[Container: React / Nginx]&lt;/div&gt;&lt;br&gt;/vaga-na-creche" vertex="1">
           <mxGeometry height="120" width="180" x="260" y="100" as="geometry" />
@@ -379,59 +395,32 @@
           <mxGeometry height="70" width="140" x="40" y="500" as="geometry" />
         </mxCell>
         <mxCell id="arch-jenkins" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;" value="&lt;b&gt;Jenkins CI/CD&lt;/b&gt;&#xa;[Software System]" vertex="1">
-          <mxGeometry height="70" width="160" x="280" y="520" as="geometry" />
+          <mxGeometry height="70" width="160" x="280" y="500" as="geometry" />
         </mxCell>
         <mxCell id="arch-registry" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;fontSize=10;" value="&lt;b&gt;Registry SME&lt;/b&gt;&#xa;[Software System]&#xa;registry.sme..." vertex="1">
-          <mxGeometry height="70" width="180" x="480" y="520" as="geometry" />
+          <mxGeometry height="70" width="180" x="500" y="500" as="geometry" />
         </mxCell>
         <mxCell id="arch-telegram" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#8C8496;fontColor=#ffffff;align=center;arcSize=10;strokeColor=#736782;" value="&lt;b&gt;Telegram&lt;/b&gt;&#xa;[Software System]" vertex="1">
-          <mxGeometry height="70" width="150" x="700" y="520" as="geometry" />
+          <mxGeometry height="70" width="150" x="730" y="500" as="geometry" />
         </mxCell>
         <mxCell id="arch-stack" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=11;fontStyle=2;fontColor=#666666;" value="Stack: React 16 | Django 2.2 DRF | PostgreSQL 12 | Redis 3.2 | Nginx | Gunicorn 19.9 | K8s + Jenkins" vertex="1">
-          <mxGeometry height="30" width="900" x="200" y="640" as="geometry" />
+          <mxGeometry height="30" width="760" x="210" y="620" as="geometry" />
         </mxCell>
-        <mxCell id="arch-e1" edge="1" parent="1" source="arch-person" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-fe" value="Usa">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e2" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-nginx" value="HTTP REST">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e3" edge="1" parent="1" source="arch-nginx" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="arch-api">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e4" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-dbvaga" value="ORM">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e5" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-ciedu" value="SQL">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e6" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-filadb" value="SQL">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e7" edge="1" parent="1" source="arch-api" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-redis" value="Cache">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e8" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-pelias" value="HTTPS">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e9" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;" target="arch-osm">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e10" edge="1" parent="1" source="arch-fe" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;" target="arch-ga">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e11" edge="1" parent="1" source="arch-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-registry" value="Push image">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e12" edge="1" parent="1" source="arch-registry" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-fe" value="Deploy">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e13" edge="1" parent="1" source="arch-registry" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-api" value="Deploy">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="arch-e14" edge="1" parent="1" source="arch-jenkins" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=1;dashed=1;strokeColor=#828282;endArrow=block;fontSize=10;fontColor=#707070;" target="arch-telegram" value="Notify">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
+        <object placeholders="1" c4Name="" c4Type="ContainerScopeBoundary" c4Application="Operação" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;&lt;div style=&quot;text-align: left&quot;&gt;%c4Name%&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;text-align: left&quot;&gt;[%c4Application%]&lt;/div&gt;" id="ZhxcZg8XDS-n2TieKp8r-1">
+          <mxCell parent="1" style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=none;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="110" width="770" x="230" y="490" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="." c4Type="SystemScopeBoundary" c4Application="Serviços Externos" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;&lt;div style=&quot;text-align: left&quot;&gt;%c4Name%&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;text-align: left&quot;&gt;[%c4Application%]&lt;/div&gt;" id="ZhxcZg8XDS-n2TieKp8r-2">
+          <mxCell parent="1" style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=none;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="340" width="170" x="30" y="280" as="geometry" />
+          </mxCell>
+        </object>
+        <object placeholders="1" c4Name="" c4Type="ContainerScopeBoundary" c4Application="Kubernets - API" label="&lt;font style=&quot;font-size: 16px&quot;&gt;&lt;b&gt;&lt;div style=&quot;text-align: left&quot;&gt;%c4Name%&lt;/div&gt;&lt;/b&gt;&lt;/font&gt;&lt;div style=&quot;text-align: left&quot;&gt;[%c4Application%]&lt;/div&gt;" id="ZhxcZg8XDS-n2TieKp8r-6">
+          <mxCell parent="1" style="rounded=1;fontSize=11;whiteSpace=wrap;html=1;dashed=1;arcSize=20;fillColor=none;strokeColor=#666666;fontColor=#333333;labelBackgroundColor=none;align=left;verticalAlign=bottom;labelBorderColor=none;spacingTop=0;spacing=10;dashPattern=8 4;metaEdit=1;rotatable=0;perimeter=rectanglePerimeter;noLabel=0;labelPadding=0;allowArrows=0;connectable=0;expand=0;recursiveResize=0;editable=1;pointerEvents=0;absoluteArcSize=1;points=[[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0.25,0],[1,0.5,0],[1,0.75,0],[0.75,1,0],[0.5,1,0],[0.25,1,0],[0,0.75,0],[0,0.5,0],[0,0.25,0]];" vertex="1">
+            <mxGeometry height="140" width="390" x="490" y="100" as="geometry" />
+          </mxCell>
+        </object>
       </root>
     </mxGraphModel>
   </diagram>
@@ -471,7 +460,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="cicd-c4" name="SISTEMA - Pipeline CI/CD">
-    <mxGraphModel dx="1100" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="860" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1200" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -515,7 +504,7 @@
           <mxGeometry height="60" width="140" x="690" y="320" as="geometry" />
         </mxCell>
         <mxCell id="cicd-note" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontStyle=2;fontColor=#666666;" value="Repositorios: SME-VagasNaCreche-API + SME-VagasNaCreche-FrontEnd&#xa;Comunicacao: exclusivamente sincrona HTTP (sem mensageria)" vertex="1">
-          <mxGeometry height="40" width="700" x="200" y="460" as="geometry" />
+          <mxGeometry height="40" width="700" x="180" y="430" as="geometry" />
         </mxCell>
         <mxCell id="cicd-e1" edge="1" parent="1" source="cicd-git" style="edgeStyle=orthogonalEdgeStyle;html=1;strokeWidth=2;strokeColor=#828282;endArrow=block;" target="cicd-jenkins">
           <mxGeometry relative="1" as="geometry" />
@@ -548,7 +537,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="aval-c4" name="SISTEMA - AVALIACAO CONSOLIDADA">
-    <mxGraphModel grid="1" page="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
+    <mxGraphModel dx="1293" dy="622" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="900" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
