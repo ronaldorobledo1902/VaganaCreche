@@ -240,7 +240,7 @@ add_geom_to_schools
 
 
 
-## 12. Modelo [Draw.io](http://Draw.io)
+## 12. Modelo [Draw.io](https://app.diagrams.net)
 
 ```text
 [EOL / RAW]

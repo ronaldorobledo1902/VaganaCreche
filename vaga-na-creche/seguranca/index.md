@@ -1,7 +1,7 @@
 # Recomendações Prioritárias — SME Vagas na Creche
 
 **Sistema:** SME Vagas na Creche  
-**Documento base:** [DOCUMENTACAO_ARQUITETURAL_SME_VagasNaCreche.md](./DOCUMENTACAO_ARQUITETURAL_SME_VagasNaCreche.md)  
+**Documento base:** [documento-arquitetural-sistema.md](../visao-arquitetural/documento-arquitetural-sistema.md)  
 **Data:** Julho/2026  
 **Versão:** 1.0  
 **Público-alvo:** Equipe técnica, gestão de produto e stakeholders de operação
@@ -326,7 +326,7 @@ As recomendações de **connection pooling** (médio prazo) e **expansão de cac
 
 ## 7. Referência
 
-Documento arquitetural completo: [DOCUMENTACAO_ARQUITETURAL_SME_VagasNaCreche.md](./DOCUMENTACAO_ARQUITETURAL_SME_VagasNaCreche.md)
+Documento arquitetural completo: [documento-arquitetural-sistema.md](../visao-arquitetural/documento-arquitetural-sistema.md)
 
 ---
 

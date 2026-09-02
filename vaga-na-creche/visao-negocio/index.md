@@ -12,7 +12,7 @@
 
 Consolidar a **visão de negócio** do Vagas na Creche com base na documentação arquitetural do sistema, no levantamento da DAG Airflow (`fila_da_creche`), no glossário e nas recomendações prioritárias.
 
-Documento irmão (visão técnica): `Documentos/DOCUMENTACAO_ARQUITETURAL_SISTEMA_VagasNaCreche.md` e `Documentos/Documento_Arquitetural_Fila_da_Creche_Arflow.md`.
+Documento irmão (visão técnica): [documento-arquitetural-sistema.md](../visao-arquitetural/documento-arquitetural-sistema.md) e [documento-arquitetural-airflow.md](../visao-arquitetural/documento-arquitetural-airflow.md).
 
 ---
 
@@ -26,6 +26,8 @@ Para **qualquer cidadã(o)** que precisa entender a **demanda e a oferta de vaga
 - registra, de forma agregada, **histórico de buscas por endereço** (telemetria de uso).
 
 **Diferencial:** ao contrário dos sistemas operacionais de matrícula (ex.: EOL), o portal é de **consulta pública**, em linguagem acessível, **sem cadastro ou login**, focado em transparência da fila e das vagas — não em efetivar matrícula.
+
+![Contexto do produto — Vagas na Creche e Airflow](../diagramas/assets/02-airflow-contexto.svg)
 
 ---
 
@@ -119,16 +121,7 @@ Para **qualquer cidadã(o)** que precisa entender a **demanda e a oferta de vaga
 2. Seleciona categoria/série e filtros de localidade (DRE, distrito, subprefeitura).  
 3. Obtém escolas com vagas e visualiza em **tabela + mapa**.
 
-```mermaid
-flowchart LR
-  Home[Homepage / Portal] --> Fila[Fila de espera]
-  Home --> Vagas[Vagas remanescentes]
-  Fila --> Geo[Endereço → coordenadas]
-  Geo --> Serie[Calcula série]
-  Serie --> ResultadoFila[Tabela + Mapa]
-  Vagas --> Filtros[DRE / distrito / subpref.]
-  Filtros --> ResultadoVagas[Tabela + Mapa]
-```
+![Jornadas do cidadão no Vagas na Creche](../diagramas/assets/09-negocio-jornadas.svg)
 
 > **Observação de produto:** o menu principal ainda aponta para `/vagas-remanescentes` (página de manutenção), enquanto o fluxo funcional está em `/vagas-remanescentes-alternativo` — inconsistência que confunde o cidadão e deve ser unificada.
 
@@ -144,7 +137,7 @@ flowchart LR
 | **Telemetria** | Histórico de buscas por endereço no banco aplicacional |
 | **Evolução recomendada** | Segurança (SQL parametrizado), estabilidade, cache ampliado, GA4, unificação da rota de vagas remanescentes |
 
-Detalhamento técnico das melhorias: `Documentos/RECOMENDACOES_PRIORITARIAS_SISTEMA_VagasNaCreche.md`.
+Detalhamento técnico das melhorias: [segurança / recomendações prioritárias](../seguranca/index.md).
 
 ---
 
@@ -229,7 +222,7 @@ Comunidade beneficiada: famílias com crianças em idade de creche, servidores S
 | Médio | Métricas de jornada (GA4); melhor tempo de resposta percebido (cache/pooling) sem mudar o valor de negócio; alertas de qualidade dos dados |
 | Longo | Carga incremental / maior frescor dos dados; novos recortes oficiais mantendo linguagem simples e mapa |
 
-Detalhamentos técnicos: `Documentos/RECOMENDACOES_PRIORITARIAS_SISTEMA_VagasNaCreche.md` e documentação do Airflow.
+Detalhamentos técnicos: [segurança / recomendações prioritárias](../seguranca/index.md) e [documentação do Airflow](../visao-arquitetural/documento-arquitetural-airflow.md).
 
 ---
 
@@ -264,12 +257,12 @@ Detalhamentos técnicos: `Documentos/RECOMENDACOES_PRIORITARIAS_SISTEMA_VagasNaC
 
 | Fonte | Uso neste documento |
 |-------|---------------------|
-| `Documentos/DOCUMENTACAO_ARQUITETURAL_SISTEMA_VagasNaCreche.md` | Visão do produto, jornadas, escopo funcional, ambientes |
-| `Documentos/Documento_Arquitetural_Fila_da_Creche_Arflow.md` | Objetivo de negócio da carga, regras, ritmo diário, riscos de dados |
-| `Levantamento/Documento_Arquitetural_Fila_da_Creche.md` | Levantamento operacional da DAG |
-| `Documentos/RECOMENDACOES_PRIORITARIAS_SISTEMA_VagasNaCreche.md` | Oportunidades e riscos de produto/experiência |
-| `Documentos/GLOSSARIO_E_EXPLICACOES_VagasNaCreche.md` | Termos e premissas de comunicação com stakeholders |
-| Diagramas `diagramas/drawio/sistema-vaganacreche/` e `fila-da-creche/` | Fluxos de fila, vagas e publicação de dados |
+| [documento-arquitetural-sistema.md](../visao-arquitetural/documento-arquitetural-sistema.md) | Visão do produto, jornadas, escopo funcional, ambientes |
+| [documento-arquitetural-airflow.md](../visao-arquitetural/documento-arquitetural-airflow.md) | Objetivo de negócio da carga, regras, ritmo diário, riscos de dados |
+| [Documento_Arquitetural_Fila_da_Creche.md](../../Levantamento/Documento_Arquitetural_Fila_da_Creche.md) | Levantamento operacional da DAG |
+| [seguranca/index.md](../seguranca/index.md) | Oportunidades e riscos de produto/experiência |
+| [GLOSSARIO_E_EXPLICACOES_VagasNaCreche.md](../../Documentos/GLOSSARIO_E_EXPLICACOES_VagasNaCreche.md) | Termos e premissas de comunicação com stakeholders |
+| [sistema-vaganacreche](../../diagramas/drawio/sistema-vaganacreche/01-arquitetura-geral.drawio) e [fila-da-creche](../../diagramas/drawio/fila-da-creche/01-arquitetura-logica.drawio) | Fluxos de fila, vagas e publicação de dados |
 
 ---
 

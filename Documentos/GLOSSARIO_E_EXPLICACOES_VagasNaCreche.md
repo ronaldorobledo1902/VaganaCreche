@@ -445,11 +445,11 @@ Termos técnicos, siglas e abreviações utilizados nas documentações do proje
 
 ## Parte 3 — Referências
 
-- [DOCUMENTACAO_ARQUITETURAL_SISTEMA_VagasNaCreche.md](./DOCUMENTACAO_ARQUITETURAL_SISTEMA_VagasNaCreche.md)
-- [ANALISE_INFRA_SUSTENTABILIDADE_CUSTOS_VagasNaCreche.md](./ANALISE_INFRA_SUSTENTABILIDADE_CUSTOS_VagasNaCreche.md)
-- [RECOMENDACOES_PRIORITARIAS_SISTEMA_VagasNaCreche.md](./RECOMENDACOES_PRIORITARIAS_SISTEMA_VagasNaCreche.md)
-- [Documento_Arquitetural_Fila_da_Creche_Arflow.md](./Documento_Arquitetural_Fila_da_Creche_Arflow.md)
-- Perguntas para levantamento arquitetural.pdf
+- [documento-arquitetural-sistema.md](../VaganaCreche/visao-arquitetural/documento-arquitetural-sistema.md)
+- [documento-arquitetural-airflow.md](../VaganaCreche/visao-arquitetural/documento-arquitetural-airflow.md)
+- [seguranca/index.md](../VaganaCreche/seguranca/index.md) (recomendações prioritárias)
+- [Documento_Arquitetural_Fila_da_Creche.md](../Levantamento/Documento_Arquitetural_Fila_da_Creche.md)
+- [Perguntas para levantamento arquitetural.pdf](../Levantamento/Perguntas%20para%20levantamento%20arquitetural.pdf)
 
 ---
 

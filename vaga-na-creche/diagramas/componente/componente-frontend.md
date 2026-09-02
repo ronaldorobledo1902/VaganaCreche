@@ -8,10 +8,7 @@ O **SME-VagasNaCreche-FrontEnd** é a SPA pública do cidadão. Organiza rotas, 
 
 Componentes de UI por feature + camada fina de serviços HTTP (Axios). Estado cross-feature via **pubsub-js** e `localStorage`.
 
-```{image} ../assets/05-sistema-arquitetura.svg
-:width: 100%
-:alt: FrontEnd no diagrama de containers / componentes
-```
+![FrontEnd no diagrama de containers / componentes](../assets/05-sistema-arquitetura.svg)
 
 ---
 

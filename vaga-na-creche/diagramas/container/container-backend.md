@@ -1,9 +1,6 @@
 # Container — vaganacreche-backend
 
-```{image} ../assets/05-sistema-arquitetura.svg
-:width: 100%
-:alt: Backend/API no diagrama de containers do Vagas na Creche
-```
+![Backend/API no diagrama de containers do Vagas na Creche](../assets/05-sistema-arquitetura.svg)
 
 ## Processamento de Backend (SME-VagasNaCreche-API)
 

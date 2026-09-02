@@ -64,4 +64,4 @@ Cidadão → FrontEnd → [Pelias] → calcula série → API → Fila DB (PostG
 - A API é pública; não há login nesta jornada
 - Dados da fila refletem o **último snapshot diário** do Airflow (ver [contexto-dados](contexto-dados.md))
 - Regras de publicação na carga: anonimização, status ativo, espera > 30 dias, distância máxima de 2 km
-- Race condition conhecida no Front (`Creches.js`) pode gerar buscas com coordenadas `undefined` — ver recomendações prioritárias
+- Race condition conhecida no Front (`Creches.js`) pode gerar buscas com coordenadas `undefined` — ver [recomendações prioritárias](../../seguranca/index.md)

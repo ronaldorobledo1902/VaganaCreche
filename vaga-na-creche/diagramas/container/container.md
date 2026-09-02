@@ -4,10 +4,7 @@ Aqui está o diagrama de **contêineres (C2)** do Vagas na Creche: mapa da topol
 
 Este desenho consolida como o **FrontEnd** e a **API** interagem com o banco aplicacional (`db_vaga`), com o banco da Fila (PostGIS), com o CIEDUDW, com o Redis e com serviços externos (Pelias, OSM, Analytics), sem camada BFF.
 
-```{image} ../assets/05-sistema-arquitetura.svg
-:width: 100%
-:alt: Diagrama de Containers — SME Vagas na Creche
-```
+![Diagrama de Containers — SME Vagas na Creche](../assets/05-sistema-arquitetura.svg)
 
 ---
 

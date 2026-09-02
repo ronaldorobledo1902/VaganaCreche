@@ -6,10 +6,7 @@ A arquitetura **as-is** é composta por dois repositórios implantados em Kubern
 
 **Premissa de negócio:** portal **público**, sem autenticação do cidadão. Não há BFF; o FrontEnd consome diretamente a API.
 
-```{image} ../assets/02-airflow-contexto.svg
-:width: 100%
-:alt: Diagrama de Contexto — SME Vagas na Creche + Airflow
-```
+![Diagrama de Contexto — SME Vagas na Creche + Airflow](../assets/02-airflow-contexto.svg)
 
 Para detalhamento das interações, o ecossistema é documentado pelas jornadas/contextos funcionais principais:
 

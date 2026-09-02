@@ -8,10 +8,7 @@ O **SME-VagasNaCreche-API** atua como núcleo de **consulta** do Vagas na Creche
 
 A anatomia interna segue apps Django por domínio (`fila_da_creche`, `vaga_remanescente`, pesquisa) e utilitários de conexão SQL aos warehouses. O fluxo é **síncrono HTTP request/response**.
 
-```{image} ../assets/05-sistema-arquitetura.svg
-:width: 100%
-:alt: Componentes no contexto da API Vagas na Creche
-```
+![Componentes no contexto da API Vagas na Creche](../assets/05-sistema-arquitetura.svg)
 
 ---
 
@@ -77,4 +74,4 @@ A anatomia interna segue apps Django por domínio (`fila_da_creche`, `vaga_reman
 | Carga Airflow | [contexto-dados.md](../contexto/contexto-dados.md) |
 | Container API | [container-backend.md](../container/container-backend.md) |
 | Matriz de risco | [06-sistema-matriz-risco.svg](../assets/06-sistema-matriz-risco.svg) |
-| Recomendações | `visao-arquitetural` / Documentos de recomendações prioritárias |
+| Recomendações | [segurança / recomendações prioritárias](../../seguranca/index.md) |

@@ -38,51 +38,11 @@ O processo realiza anonimização dos identificadores das solicitações antes d
 
 ## 4. Arquitetura Lógica
 
-```mermaid
-flowchart TB
-    subgraph Origem["Camada de Origem"]
-        EOL[EOL / RAW_EOL]
-        DW[(CIEDU DW<br/>Data Warehouse)]
-    end
-
-    subgraph Processamento["Camada de Processamento"]
-        Airflow[Airflow DAG<br/>fila_da_creche]
-    end
-
-    subgraph Destino["Camada de Destino"]
-        FilaDB[(Banco Fila da Creche<br/>PostgreSQL + PostGIS)]
-        Portal[Portal / API Pública]
-    end
-
-    EOL --> DW
-    DW -->|extract| Airflow
-    Airflow -->|truncate + load + geom| FilaDB
-    FilaDB -->|leitura| Portal
-```
-
-
+![Arquitetura lógica do Airflow](../diagramas/assets/02-airflow-contexto.svg)
 
 ## 5. Arquitetura Física
 
-```mermaid
-flowchart TB
-    subgraph AirflowHost["Airflow"]
-        Repo["/data/ciedu-workflows"]
-        Tmp["/tmp/fdc_dump.sql"]
-    end
-
-    subgraph OrigemDB["Origem"]
-        CIEDU[(CIEDU_DW PostgreSQL<br/>potomac.educacao.intranet:5432)]
-    end
-
-    subgraph DestinoDB["Destino"]
-        FilaAPI[(fila_da_creche_api_do<br/>PostgreSQL<br/>10.50.1.45:5432)]
-    end
-
-    Repo --> CIEDU
-    CIEDU -->|extract| Tmp
-    Tmp -->|pg_dump / copy| FilaAPI
-```
+![Arquitetura física do Airflow](../diagramas/assets/04-airflow-etl.svg)
 
 **Objetivo**
 
@@ -135,43 +95,7 @@ c - Possibiltar visualizações em mapas
 
 ## 7. Fluxo da DAG
 
-```mermaid
-flowchart TB
-    subgraph Fase1["FASE 1 — Extração (paralelo)"]
-        T1[solicitacao_matricula_grade_dw]
-        T2[solicitacao_matricula_grade_dw_atualizacao]
-        T3[unidades_educacionais_ativas_endereco_contato]
-        T4[unidades_educacionais_infantil_vagas_serie]
-        T5[unidades_educacionais_infantil_vagas_seriev2]
-    end
-
-    subgraph Fase2["FASE 2 — Limpeza"]
-        T6[truncate_fila_da_creche_tables]
-    end
-
-    subgraph Fase3["FASE 3 — Carga (sequencial)"]
-        T7[copy_unidades_educacionais_infantil_vagas_serie]
-        T8[copy_unidades_educacionais_ativas_endereco_contato]
-        T9[copy_solicitacao_matricula_grade_dw]
-        T10[copy_solicitacao_matricula_grade_dw_atualizacao]
-        T11[add_geom_to_schools]
-    end
-
-    T1 --> T5
-    T1 --> T6
-    T2 --> T6
-    T3 --> T6
-    T4 --> T6
-    T5 --> T6
-
-    T6 --> T7
-    T7 --> T8
-    T8 --> T9
-    T9 --> T10
-    T10 --> T11
-```
-
-
+![Fluxo da DAG fila_da_creche](../diagramas/assets/03-airflow-dag.svg)
 
 ### Saúde operacional (histórico)
 
@@ -255,46 +179,18 @@ flowchart TB
 
 
 
-## 12. Modelo Draw.io
+## 12. Modelo [Draw.io](https://app.diagrams.net)
 
-Arquivos gerados em `diagramas/drawio/fila-da-creche/` — abrir em [app.diagrams.net](https://app.diagrams.net) ou Draw.io Desktop:
+Arquivos gerados em [`diagramas/drawio/fila-da-creche/`](../../diagramas/drawio/fila-da-creche/01-arquitetura-logica.drawio) — abrir em [app.diagrams.net](https://app.diagrams.net) ou Draw.io Desktop:
 
-| Arquivo | Seção do documento |
-|---|---|
-| `01-arquitetura-logica.drawio` | §4 — Arquitetura Lógica |
-| `02-arquitetura-fisica.drawio` | §5 — Arquitetura Física |
-| `03-fluxo-processamento.drawio` | §6 — Fluxo de Processamento (4 fases) |
-| `04-fluxo-dag.drawio` | §7 — Fluxo da DAG (11 tasks) |
-| `05-modelo-completo.drawio` | §12 — Modelo completo do pipeline |
-| `06-riscos-recomendacoes.drawio` | §10–11 — Riscos e Recomendações |
 
-**Exportar:** File → Export as → PNG / SVG / PDF
+| Arquivo                          | Seção do documento                    |
+| -------------------------------- | ------------------------------------- |
+| [`01-arquitetura-logica.drawio`](../../diagramas/drawio/fila-da-creche/01-arquitetura-logica.drawio) | §4 — Arquitetura Lógica               |
+| [`02-arquitetura-fisica.drawio`](../../diagramas/drawio/fila-da-creche/02-arquitetura-fisica.drawio) | §5 — Arquitetura Física               |
+| [`03-fluxo-processamento.drawio`](../../diagramas/drawio/fila-da-creche/03-fluxo-processamento.drawio) | §6 — Fluxo de Processamento (4 fases) |
+| [`04-fluxo-dag.drawio`](../../diagramas/drawio/fila-da-creche/04-fluxo-dag.drawio) | §7 — Fluxo da DAG (11 tasks)          |
+| [`05-modelo-completo.drawio`](../../diagramas/drawio/fila-da-creche/05-modelo-completo.drawio) | §12 — Modelo completo do pipeline     |
+| [`06-riscos-recomendacoes.drawio`](../../diagramas/drawio/fila-da-creche/06-riscos-recomendacoes.drawio) | §10–11 — Riscos e Recomendações       |
 
-```text
-[EOL / RAW]
-      |
-      v
-[CIEDU DW]
-      |
-      v
-[Airflow DAG]
-      |
-      v
-[Transformações]
-      |
-      v
-[Truncate Destino]
-      |
-      v
-[Replicação pg_dump]
-      |
-      v
-[Fila da Creche DB]
-      |
-      v
-[Add Geom]
-      |
-      v
-[Portal Público]
-```
 

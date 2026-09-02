@@ -4,17 +4,11 @@
 
 Os dados de **fila de espera** exibidos no portal **não** são lidos em tempo real do CIEDU DW pela API. Um pipeline **diário** no Apache Airflow extrai consolidados do DW, aplica regras de negócio e **anonimização**, e **republica** as tabelas no banco **Fila da Creche** (PostgreSQL + PostGIS), consumido pelo portal.
 
-```{image} ../assets/04-airflow-etl.svg
-:width: 100%
-:alt: Fluxo ETL diário — DAG fila_da_creche
-```
+![Fluxo ETL diário — DAG fila_da_creche](../assets/04-airflow-etl.svg)
 
 Também disponível o detalhamento da DAG:
 
-```{image} ../assets/03-airflow-dag.svg
-:width: 100%
-:alt: DAG fila_da_creche — 11 tasks
-```
+![DAG fila_da_creche — 11 tasks](../assets/03-airflow-dag.svg)
 
 ---
 

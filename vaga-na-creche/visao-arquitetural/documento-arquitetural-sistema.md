@@ -20,88 +20,27 @@ O **SME Vagas na Creche** é um portal público da Secretaria Municipal de Educa
 A solução é composta por dois repositórios independentes, implantados em **Kubernetes** na infraestrutura da SME, com pipeline **CI/CD via Jenkins**.
 
 
-| Componente             | Tecnologia principal               | Função                                            |
-| ---------------------- | ---------------------------------- | ------------------------------------------------- |
-| **FrontEnd**           | React 16 + Create React App 3      | SPA pública servida por Nginx                     |
-| **API**                | Django 2.2 + Django REST Framework | API REST de consulta e persistência               |
-| **Banco aplicacional (`db_vaga`)** | PostgreSQL 12                      | Dados próprios da aplicação (histórico de buscas) |
-| **Data Warehouse**     | PostgreSQL (CIEDUDW)               | Dados de vagas, DREs, distritos                   |
-| **Banco da Fila**      | PostgreSQL + PostGIS (porta 5433)  | Dados de fila de espera e geolocalização          |
-| **Cache**              | Redis 3.2                          | Cache de filtros de vagas remanescentes           |
+| Componente                             | Tecnologia principal               | Função                                            |
+| -------------------------------------- | ---------------------------------- | ------------------------------------------------- |
+| **FrontEnd**                           | React 16 + Create React App 3      | SPA pública servida por Nginx                     |
+| **API**                                | Django 2.2 + Django REST Framework | API REST de consulta e persistência               |
+| **Banco aplicacional (**`db_vaga`**)** | PostgreSQL 12                      | Dados próprios da aplicação (histórico de buscas) |
+| **Data Warehouse**                     | PostgreSQL (CIEDUDW)               | Dados de vagas, DREs, distritos                   |
+| **Banco da Fila**                      | PostgreSQL + PostGIS (porta 5433)  | Dados de fila de espera e geolocalização          |
+| **Cache**                              | Redis 3.2                          | Cache de filtros de vagas remanescentes           |
 
 
 ---
-
-
 
 ## 2. Diagrama de Arquitetura
 
-```mermaid
-flowchart TB
-    subgraph Usuario["Cidadão / Navegador"]
-        Browser[SPA React<br/>/vaga-na-creche]
-    end
-
-    subgraph K8s_Front["Kubernetes — FrontEnd"]
-        NginxFE[Nginx<br/>assets estáticos]
-    end
-
-    subgraph K8s_API["Kubernetes — API"]
-        NginxAPI[Nginx<br/>reverse proxy :80]
-        Gunicorn[Gunicorn<br/>Django DRF :8000]
-    end
-
-    subgraph Dados["Camada de Dados"]
-        PG_App[(PostgreSQL<br/>db_vaga)]
-        PG_DW[(CIEDUDW<br/>Data Warehouse)]
-        PG_Fila[(Fila da Creche<br/>PostgreSQL + PostGIS)]
-        Redis[(Redis 3.2<br/>Cache)]
-    end
-
-    subgraph Externos["Serviços Externos"]
-        GeoAPI[API de Geocodificação<br/>Pelias /v1/search]
-        OSM[OpenStreetMap<br/>tiles de mapa]
-        GA[Google Analytics]
-    end
-
-    subgraph DevOps["Operação"]
-        Jenkins[Jenkins CI/CD]
-        Registry[Registry SME<br/>registry.sme.prefeitura.sp.gov.br]
-        Telegram[Notificações Telegram]
-    end
-
-    Browser --> NginxFE
-    Browser --> GeoAPI
-    Browser --> OSM
-    Browser --> GA
-
-    NginxFE -->|HTTP REST| NginxAPI
-    NginxAPI --> Gunicorn
-
-    Gunicorn --> PG_App
-    Gunicorn --> PG_DW
-    Gunicorn --> PG_Fila
-    Gunicorn --> Redis
-
-    Jenkins --> Registry
-    Registry --> K8s_Front
-    Registry --> K8s_API
-    Jenkins --> Telegram
-```
-
-
+![Diagrama de arquitetura do sistema](../diagramas/assets/05-sistema-arquitetura.svg)
 
 ---
 
-
-
 ## 3. Respostas às Questões Solicitadas
 
-
-
 ### 3.1 — Qual tipo de conexão?
-
-
 
 #### FrontEnd → Backends
 
@@ -122,19 +61,15 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 - `API_ENDERECO` — base da API de geocodificação
 - `URL_VIDEO` — URL de vídeo institucional
 
-
-
 #### API → Bancos de Dados
 
 
-| Conexão                  | Driver / ORM                   | Padrão                         | Variáveis de ambiente                                                                |
-| ------------------------ | ------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------ |
+| Conexão                        | Driver / ORM                   | Padrão                         | Variáveis de ambiente                                                                |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------------------------------------------------------------ |
 | Banco aplicacional (`db_vaga`) | Django ORM + psycopg2          | Pool gerenciado pelo Django    | `POSTGRES_DB=db_vaga`, `POSTGRES_USER`, `POSTGRES_PASSWORD`, `DB_HOST`, `DB_PORT`    |
-| CIEDUDW (Data Warehouse) | psycopg2 (SQL bruto)           | **Nova conexão TCP por query** | `CIEDUDW_HOST`, `CIEDUDW_USER`, `CIEDUDW_PASS`, `CIEDUDW_DB`                         |
-| Fila da Creche           | psycopg2 (SQL bruto + PostGIS) | **Nova conexão TCP por query** | `FILADB_HOST`, `FILADB_USER`, `FILADB_PASS` (dbname fixo: `postgres`, porta: `5433`) |
-| Redis                    | django-redis                   | Cliente Redis padrão           | `REDIS_URL`                                                                          |
-
-
+| CIEDUDW (Data Warehouse)       | psycopg2 (SQL bruto)           | **Nova conexão TCP por query** | `CIEDUDW_HOST`, `CIEDUDW_USER`, `CIEDUDW_PASS`, `CIEDUDW_DB`                         |
+| Fila da Creche                 | psycopg2 (SQL bruto + PostGIS) | **Nova conexão TCP por query** | `FILADB_HOST`, `FILADB_USER`, `FILADB_PASS` (dbname fixo: `postgres`, porta: `5433`) |
+| Redis                          | django-redis                   | Cliente Redis padrão           | `REDIS_URL`                                                                          |
 
 
 #### API → Cliente
@@ -151,8 +86,6 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 **Não há:** conexões WebSocket, gRPC, GraphQL, filas de mensageria ou integrações HTTP outbound na API.
 
 ---
-
-
 
 ### 3.2 — Utiliza cache no sistema? Qual?
 
@@ -175,8 +108,6 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 - `GET /vaga/{cd_serie}/?filtro=...&busca=...`
 - `POST /pesquisa/historico_busca_end/`
 
-
-
 #### FrontEnd
 
 
@@ -192,11 +123,7 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 
 ---
 
-
-
 ### 3.3 — Pontos de falha que precisam ser melhorados
-
-
 
 #### Críticos (ação imediata recomendada)
 
@@ -209,8 +136,6 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 | 4   | **Tratamento de erro frágil em conexões externas** — em falha, retorna tupla/string `'ERROR'` em vez de estrutura esperada, causando crash (`KeyError`) | Indisponibilidade em cascata quando DW ou Fila caem | `ciedudw_connection.py`, `db_fila_creche_connection.py` |
 
 
-
-
 #### Altos
 
 
@@ -221,8 +146,6 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 | 7   | **Stack tecnológica EOL** — Python 3.7, Django 2.2, Node 12, React 16, axios 0.19, Redis 3.2                                                          | Vulnerabilidades conhecidas sem patches                |
 | 8   | **Race condition no FrontEnd** — `Creches.js` usa `UNSAFE_componentWillMount` + `componentDidMount`; API pode ser chamada com coordenadas `undefined` | Resultado vazio ou erro intermitente                   |
 | 9   | **Erros silenciados no FrontEnd** — blocos `.catch()` vazios em chamadas de API                                                                       | Falhas invisíveis ao usuário e à operação              |
-
-
 
 
 #### Médios
@@ -240,28 +163,7 @@ O cliente HTTP é centralizado em `ConectarApi.js` — um wrapper simples sobre 
 | 17  | **Autocomplete sem debounce** — cada tecla dispara chamada à API de geocodificação                                                       | Sobrecarga desnecessária                            |
 
 
-
-
-#### Diagrama de dependências e SPOFs
-
-```mermaid
-flowchart LR
-    FE[FrontEnd] -->|SPOF| API[API Django]
-    API -->|SPOF| DW[(CIEDUDW)]
-    API -->|SPOF| Fila[(Fila DB)]
-    API --> PG[(db_vaga)]
-    API -.->|opcional| Redis[(Redis)]
-
-    style DW fill:#f96,stroke:#333
-    style Fila fill:#f96,stroke:#333
-    style API fill:#fc6,stroke:#333
-```
-
-
-
 ---
-
-
 
 ### 3.4 — Existe padrão de observabilidade?
 
@@ -298,11 +200,7 @@ flowchart LR
 
 ---
 
-
-
 ### 3.5 — Utiliza padrões de projeto? Quais?
-
-
 
 #### API (Django / DRF)
 
@@ -324,8 +222,6 @@ flowchart LR
 **Caracterização:** Arquitetura pragmática de **thin query service** sobre data warehouses externos. Não segue DDD, Clean Architecture ou Hexagonal de forma formal.
 
 ### 3.6 — Pontos de entrada têm padrão de segurança?
-
-
 
 #### Contexto
 
@@ -349,46 +245,11 @@ Trata-se de um **portal público** para cidadãos — não há login de usuário
 | Swagger público          | **Sim**              | Schema completo exposto sem autenticação                                  |
 
 
-
-
 #### Matriz de risco de segurança
 
-```mermaid
-flowchart TB
-    subgraph topo["Alta Probabilidade"]
-        direction LR
-        subgraph q2["Monitorar"]
-            SW["Swagger publico"]
-        end
-        subgraph q1["Mitigar urgentemente"]
-            SQL["SQL Injection"]
-            EOL["Stack EOL"]
-            CO["CORS aberto"]
-        end
-    end
-    subgraph base["Baixa Probabilidade"]
-        direction LR
-        subgraph q3["Aceitar"]
-            V3["(nenhum)"]
-        end
-        subgraph q4["Planejar correcao"]
-            AUTH["API sem auth"]
-            RL["Sem rate limit"]
-        end
-    end
-
-    style q1 fill:#f96,stroke:#333
-    style q2 fill:#fc6,stroke:#333
-    style q3 fill:#9e9,stroke:#333
-    style q4 fill:#ff9,stroke:#333
-    style V3 fill:#9e9,stroke:#9e9,color:#666
-```
-
-
+![Matriz de risco de segurança](../diagramas/assets/06-sistema-matriz-risco.svg)
 
 ---
-
-
 
 ### 3.7 — Utiliza mensageria?
 
@@ -398,29 +259,7 @@ flowchart TB
 
 #### Pipeline CI/CD
 
-```mermaid
-flowchart LR
-    Git[Push Git] --> Jenkins[Jenkins Pipeline]
-    Jenkins --> Lint[JSHint / SonarQube]
-    Jenkins --> Build[Docker Build]
-    Build --> Registry[Registry SME]
-    Registry --> K8s[kubectl rollout restart]
-    K8s --> Telegram[Notificação Telegram]
-
-    subgraph Ambientes
-        Dev[vaganacreche-dev]
-        Hom[vaganacreche-hom]
-        Hom2[vaganacreche-hom2]
-        Prod[sme-vaganacreche]
-    end
-
-    K8s --> Dev
-    K8s --> Hom
-    K8s --> Hom2
-    K8s --> Prod
-```
-
-
+![Pipeline CI/CD](../diagramas/assets/07-sistema-cicd.svg)
 
 
 | Branch            | Namespace Kubernetes |
@@ -435,7 +274,7 @@ flowchart LR
 
 #### Modelo de dados (banco aplicacional `db_vaga`)
 
-Database PostgreSQL: **`db_vaga`** (variável de ambiente `POSTGRES_DB`).
+Database PostgreSQL: `db_vaga` (variável de ambiente `POSTGRES_DB`).
 
 Única entidade gerenciada pela aplicação:
 
@@ -465,73 +304,9 @@ Demais dados são **somente leitura** de sistemas legados (DW e Fila).
 
 ---
 
+## 4. Avaliação Consolidada
 
-
-## 4. Fluxos de Negócio Principais
-
-
-
-### 4.1 — Consulta de Demanda (Fila de Espera)
-
-```mermaid
-sequenceDiagram
-    participant U as Cidadão
-    participant FE as FrontEnd
-    participant GEO as API Endereços
-    participant API as API Creche
-    participant Fila as Banco Fila (PostGIS)
-
-    U->>FE: Informa endereço e data nascimento
-    FE->>GEO: GET /v1/search?text=...
-    GEO-->>FE: Coordenadas (lat/lng)
-    FE->>FE: Calcula série de ensino
-  FE->>FE: Salva em localStorage
-    FE->>API: GET /fila/espera_escola_raio/{lat}/{lng}/{serie}
-    API->>Fila: SQL + ST_DWithin (raio geográfico)
-    Fila-->>API: Escolas + posição na fila
-    API-->>FE: JSON com escolas
-    FE->>API: POST /pesquisa/historico_busca_end/
-    FE-->>U: Tabela + Mapa
-```
-
-
-
-
-
-### 4.2 — Consulta de Vagas Remanescentes
-
-```mermaid
-sequenceDiagram
-    participant U as Cidadão
-    participant FE as FrontEnd
-    participant API as API Creche
-    participant Redis as Redis
-    participant DW as CIEDUDW
-
-    U->>FE: Seleciona categoria e localidade
-    FE->>API: GET /vaga/filtros/
-    API->>Redis: cache.get('filtros_vaga')
-    alt Cache miss
-        API->>DW: Queries DRE, distritos, subprefeituras
-        DW-->>API: Dados
-        API->>Redis: cache.set (TTL 1h)
-    end
-    API-->>FE: Filtros disponíveis
-    U->>FE: Confirma busca
-    FE->>API: GET /vaga/{serie}/?filtro=&busca=
-    API->>DW: SQL vagas por escola
-    DW-->>API: Escolas com vagas
-    API-->>FE: JSON
-    FE-->>U: Tabela + Mapa
-```
-
-
-
----
-
-
-
-## 5. Avaliação Consolidada
+![Avaliação consolidada](../diagramas/assets/08-sistema-avaliacao.svg)
 
 
 | Dimensão             | Nota        | Comentário                                           |
@@ -548,13 +323,9 @@ sequenceDiagram
 
 ---
 
+## 5. Recomendações Prioritárias
 
-
-## 6. Recomendações Prioritárias
-
-
-
-### Curto prazo (0–3 meses) — Segurança e Estabilidade
+### Curto prazo
 
 1. **Parametrizar todas as queries SQL** — eliminar SQL injection.
 2. **Implementar health checks** (`/health/live`, `/health/ready`) com verificação de dependências.
@@ -563,9 +334,7 @@ sequenceDiagram
 5. **Adicionar validação de entrada** (coordenadas, filtros, série).
 6. **Corrigir race condition** em `Creches.js` e erros silenciados no FrontEnd.
 
-
-
-### Médio prazo (3–6 meses) — Observabilidade e Resiliência
+### Médio prazo
 
 1. **Implementar logging estruturado** (JSON) + centralização (ELK, Loki, CloudWatch).
 2. **Adicionar APM** (latência por endpoint, taxa de erro).
@@ -574,9 +343,7 @@ sequenceDiagram
 5. **Rate limiting** nos endpoints públicos (DRF throttling).
 6. **Integrar Sentry** no FrontEnd e na API para error tracking.
 
-
-
-### Longo prazo (6–12 meses) — Modernização
+### Longo prazo
 
 1. **Upgrade de stack** — Python 3.12+, Django 4.2+/5.x, Node 20+, React 18+.
 2. **Migrar FrontEnd** para Vite ou Next.js com React Query para cache de API.
@@ -587,47 +354,45 @@ sequenceDiagram
 
 ---
 
+## 6. Glossário
 
 
-## 7. Glossário
-
-
-| Termo       | Significado                                                          |
-| ----------- | -------------------------------------------------------------------- |
-| **CIEDUDW** | Data Warehouse da SME com dados educacionais (vagas, unidades, DREs) |
+| Termo       | Significado                                                                                                                             |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **CIEDUDW** | Data Warehouse da SME com dados educacionais (vagas, unidades, DREs)                                                                    |
 | **db_vaga** | Banco PostgreSQL aplicacional da Vagas na Creche (`POSTGRES_DB=db_vaga`); armazena telemetria na tabela `pesq_historico_busca_endereco` |
-| **DRE**     | Diretoria Regional de Educação                                       |
-| **DRF**     | Django REST Framework                                                |
-| **EOL**     | End of Life — versão sem suporte de segurança                        |
-| **PostGIS** | Extensão geoespacial do PostgreSQL                                   |
-| **SPOF**    | Single Point of Failure — ponto único de falha                       |
-| **SPA**     | Single Page Application                                              |
-| **SME**     | Secretaria Municipal de Educação de São Paulo                        |
+| **DRE**     | Diretoria Regional de Educação                                                                                                          |
+| **DRF**     | Django REST Framework                                                                                                                   |
+| **EOL**     | End of Life — versão sem suporte de segurança                                                                                           |
+| **PostGIS** | Extensão geoespacial do PostgreSQL                                                                                                      |
+| **SPOF**    | Single Point of Failure — ponto único de falha                                                                                          |
+| **SPA**     | Single Page Application                                                                                                                 |
+| **SME**     | Secretaria Municipal de Educação de São Paulo                                                                                           |
 
 
 ---
 
+## Diagramas [Draw.io](https://app.diagrams.net)
+
+Arquivos editáveis em [`diagramas/drawio/sistema-vaganacreche/`](../../diagramas/drawio/sistema-vaganacreche/01-arquitetura-geral.drawio) — abrir em [app.diagrams.net](https://app.diagrams.net) ou Draw.io Desktop:
 
 
-## Diagramas Draw.io
+| Arquivo                               | Seção do documento                          |
+| ------------------------------------- | ------------------------------------------- |
+| [`01-arquitetura-geral.drawio`](../../diagramas/drawio/sistema-vaganacreche/01-arquitetura-geral.drawio) | §2 — Diagrama de Arquitetura                |
+| [`02-spofs-dependencias.drawio`](../../diagramas/drawio/sistema-vaganacreche/02-spofs-dependencias.drawio) | §3.3 — Dependências e SPOFs                 |
+| [`03-matriz-risco-seguranca.drawio`](../../diagramas/drawio/sistema-vaganacreche/03-matriz-risco-seguranca.drawio) | §3.6 — Matriz de risco de segurança         |
+| [`04-pipeline-cicd.drawio`](../../diagramas/drawio/sistema-vaganacreche/04-pipeline-cicd.drawio) | §3.7 — Pipeline CI/CD                       |
+| [`05-fluxo-fila-espera.drawio`](../../diagramas/drawio/sistema-vaganacreche/05-fluxo-fila-espera.drawio) | §4.1 — Consulta de Demanda (Fila de Espera) |
+| [`06-fluxo-vagas-remanescentes.drawio`](../../diagramas/drawio/sistema-vaganacreche/06-fluxo-vagas-remanescentes.drawio) | §4.2 — Consulta de Vagas Remanescentes      |
+| [`07-avaliacao-consolidada.drawio`](../../diagramas/drawio/sistema-vaganacreche/07-avaliacao-consolidada.drawio) | §5 — Avaliação Consolidada                  |
 
-Arquivos editáveis em `diagramas/drawio/sistema-vaganacreche/` — abrir em [app.diagrams.net](https://app.diagrams.net) ou Draw.io Desktop:
-
-| Arquivo | Seção do documento |
-|---|---|
-| `01-arquitetura-geral.drawio` | §2 — Diagrama de Arquitetura |
-| `02-spofs-dependencias.drawio` | §3.3 — Dependências e SPOFs |
-| `03-matriz-risco-seguranca.drawio` | §3.6 — Matriz de risco de segurança |
-| `04-pipeline-cicd.drawio` | §3.7 — Pipeline CI/CD |
-| `05-fluxo-fila-espera.drawio` | §4.1 — Consulta de Demanda (Fila de Espera) |
-| `06-fluxo-vagas-remanescentes.drawio` | §4.2 — Consulta de Vagas Remanescentes |
-| `07-avaliacao-consolidada.drawio` | §5 — Avaliação Consolidada |
 
 **Exportar:** File → Export as → PNG / SVG / PDF
 
 ---
 
-## 8. Referências de Código
+## 7. Referências de Código
 
 
 | Artefato                      | Repositório | Caminho                                     |
